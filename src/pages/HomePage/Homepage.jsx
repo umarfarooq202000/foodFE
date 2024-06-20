@@ -159,6 +159,7 @@ function Homepage() {
         } 
     else {
         setCartFoodList((prevCart) => [...prevCart, foodItems]);
+        localStorage.setItem("cartfood",JSON.stringify(CartFoodList))
         Addtoast1(foodItems.name);
         AddFood();
 
@@ -396,7 +397,6 @@ function Homepage() {
         closeOnClick
         rtl={false}
         pauseOnFocusLoss
-        draggable
         pauseOnHover
         theme="colored"
       />
