@@ -65,18 +65,18 @@ function Navbar({
   const CutMenu = () => {
     setDisplayMenu(false);
   };
-
-  const { filtertype, handleFilterChange, setActiveFilter } = UseMyContext();
+ 
+  const{filtertype,handleFilterChange,setActiveFilter,}=UseMyContext()
   console.log(filtertype);
   //to get offer food items
-  const handleClick = (e) => {
+  const handleClick=(e)=>{
     // console.log(e.target.innerText);
-    let value = e.target.textContent;
-    if (value !== "") {
-      handleFilterChange(value);
-    }
-    setActiveFilter(value);
-  };
+     let value=e.target.textContent
+     if(value!==""){
+        handleFilterChange(value)
+     }
+   setActiveFilter(value)
+  }
   return (
     <>
       <div
@@ -84,7 +84,7 @@ function Navbar({
       >
         <div className="max-w-[200px] h-[60px]  flex  items-center gap-1">
           <img
-            src="https://i.pinimg.com/236x/86/fa/02/86fa02f165fd0db848d2d13e5e484758.jpg"
+            src="app\public\images\biryani.jpg.zip"
             alt="Logo"
             className="w-[40%] h-[100%]"
           />
@@ -122,25 +122,25 @@ function Navbar({
                         <span className="text-2xl">{menu.icon}</span>
                         {menu.name}
                       </button>
-                    ) : menu.name === "Offers" ? (
-                      <Badge  badgeContent="New"color="primary" >
-                        <button
+                    ) : (
+                      menu.name=== "Offers"
+                      ? (
+                        <button 
                           onClick={handleClick}
-                          className="font-medium flex items-center gap-2 text-grey hover:text-mainColor"
-                        >
+                          className="font-medium flex items-center gap-2 text-grey hover:text-mainColor">
                           <span className="text-2xl">{menu.icon}</span>
                           Offers
                         </button>
-                      </Badge>
-                    ) : (
-                      <Link
+                       )
+                     :( <Link
                         to={`${menu.path}`}
                         target="_blank"
                         className="font-medium flex items-center gap-2 text-grey hover:text-mainColor"
                       >
                         <span className="text-2xl">{menu.icon}</span>
                         {menu.name}
-                      </Link>
+                      </Link>)
+                      
                     )}
                   </>
                 )
@@ -152,14 +152,15 @@ function Navbar({
                     to={`${menu.path}`}
                     className="font-medium flex items-center gap-2 text-grey hover:text-mainColor  "
                   >
-                    <Badge badgeContent={FoodCount || "0"} color="primary">
-                      <span
-                        className={`magictime ${
-                          Animate ? "twisterInUp twisterInDown-custom" : ""
-                        } flex justify-center items-center text-2xl `}
-                      >
-                        {menu.icon}
-                      </span>
+                    <Badge badgeContent = {FoodCount || "0"} color="primary">
+                    <span
+                      className={`magictime ${
+                        Animate ? "twisterInUp twisterInDown-custom" : ""
+                      } flex justify-center items-center text-2xl `}
+                    >
+                      {menu.icon}
+                     
+                    </span>
                     </Badge>
                     {menu.name}
                   </Link>

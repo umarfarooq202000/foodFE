@@ -47,6 +47,7 @@ const DeleteAll=(e)=>{
 
   return (
     <>
+      {/*Navbar*/}
       <div
         className={`flex  items-center justify-around  w-[100vw] h-[80px] border-b-2 shadow-lg fixed z-50 bg-white  `}
       >

@@ -23,8 +23,7 @@ export default {
         bg:"#F8F8FF",
         borderColor:"#DCDCDC",
         greenColor:"#1A7C26",
-        lightGrey:"#F4F4F4",
-        colorhelp:"#37718e",
+        lightGrey:"#F4F4F4"
       },
       transitionDuration:{
         transition:".5s ease all"

@@ -1,13 +1,12 @@
 {
     "name": "app",
-    "homepage": "https://umarfarooq202000.github.io/ECommerceFoodApp/",
+   
     "private": true,
     "version": "0.0.0",
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "predeploy": "npm run build",
-        "deploy": "gh-pages -d dist",
+       
         "build": "vite build",
         "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
         "preview": "vite preview"
@@ -15,9 +14,7 @@
     "dependencies": {
         "@emotion/react": "^11.11.4",
         "@emotion/styled": "^11.11.5",
-        "@mui/base": "^5.0.0-beta.40",
         "@mui/material": "^5.15.20",
-        "@vitejs/plugin-react": "^4.3.1",
         "aos": "^2.3.4",
         "axios": "^1.6.8",
         "formik": "^2.4.6",

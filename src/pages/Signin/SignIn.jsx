@@ -18,17 +18,12 @@ export default function SignIn({ onClose }) {
 
   //toast added when food is added to cart
   const Addtoast1 = () => {
-
-    toast.warning(
+   
+    toast.success(
       <div className="text-xl flex items-center justify-between">
-      {"User Authorization is not suported yet"}
+      {" Login with  successfully"}
+       
       </div>,
-      {
-        style: {
-          fontFamily: "ubuntu",
-          color:"red"
-        },
-      }
      
     );
   };
@@ -94,7 +89,7 @@ export default function SignIn({ onClose }) {
         </Formik>
       </div>
       <ToastContainer
-        position="top-left"
+        position="bottom-left"
         autoClose={2500}
         hideProgressBar={false}
         newestOnTop={false}
@@ -103,7 +98,7 @@ export default function SignIn({ onClose }) {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="light"
+        theme="colored"
       />
 
     </div>

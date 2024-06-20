@@ -22,7 +22,7 @@ function AllFilters({isNavFilter,SearchFoodFun}) {
   }
   
   //make addition filter  direct on sceen 
-  const top_filter=["veg","Chinese","Meat","Indian","ratings 4+"]
+  const top_filter=["veg","Offers","Meat","Pure Veg","Ratings 4+"]
 
   const {isOpen,onOpen,onClose}=useDisclosure()
 

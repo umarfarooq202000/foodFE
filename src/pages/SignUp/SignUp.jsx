@@ -27,6 +27,10 @@ function SignUp({ onClose }) {
       .notRequired(),
   });
 
+   
+
+   
+
   const handleSubmit = async (values) => {
     setLoginNumber(values.phone_no)
     try {
@@ -48,15 +52,8 @@ function SignUp({ onClose }) {
     } catch (error) {
       toast.error(
         <div className="text-xl flex items-center justify-between">
-          {"SignUp Registration is not bulid yet"}
-        </div>,
-         {
-          style: {
-            fontSize:"10px",
-            fontFamily: "ubuntu",
-            color:"red"
-          },
-        }
+          {"SignUp Unsuccessfull"}
+        </div>
       );
       console.error('Error:', error.response ? error.response.data : error.message);
       // Handle error (e.g., show error message)
@@ -178,7 +175,7 @@ function SignUp({ onClose }) {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="light"
+        theme="colored"
       />
     </div>
   );
