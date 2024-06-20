@@ -45,7 +45,7 @@ function Foods({title}) {
   // foodData.filter(food => food.type.includes('pizza'))
   
   useEffect(()=>{
-    fetchData(`http://localhost:9000/${food}`)
+    fetchData(`https://foodbe-8h5f.onrender.com/${food}`)
   },[])
   
   

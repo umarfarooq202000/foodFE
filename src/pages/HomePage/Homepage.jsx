@@ -185,7 +185,7 @@ function Homepage() {
   };
 
   useEffect(() => {
-    fetchData("http://localhost:9000/fooddata");
+    fetchData("https://foodbe-8h5f.onrender.com/fooddata");
   }, []);
 
   //search food function
