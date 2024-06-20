@@ -31,90 +31,86 @@ import ConfirmOrder from "./pages/ConfirmOrder/ConfirmOrder.jsx";
 
 function App() {
   
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Homepage/>,
-    },
-    {
-      path: "/about-us",
-      element: <AboutUs/>,
-    },
-    {
-      path: "/search",
-      element: <Search/>,
-    },
-    {
-      path: "/offers",
-      element: <Offers/>,
-    },
-    {
-      path: "/help",
-      element: <Help/>,
-    },
-    {
-      path: "/signin",
-      element: <SignIn/>,
-    },
-    {
-      path:"/termsCondition",
-      element:<TermsCondition/>
-    },
-    {
-      path: "/cart",
-      element: <Cart/>,
-    },
-   
-    {
-      path: "/pizza",
-      element: <Pizza/>,
-    },
-    {
-      path:'/burger',
-      element:<Burger/>
-    },
-    {
-      path:'/biryani',
-      element:<Biryani/>
-    },
-    {
-      path:'/noodles',
-      element:<Noodles/>
-    },
-    {
-      path:'/drinks',
-      element:<Drinks/>
-    },
-    {
-      path:'/momos',
-      element:<Momos/>
-    },
-    {
-      path:'/shakes',
-      element:<Shakes/>
-    },
-    {
-      path:'/parathas',
-      element:<Parathas/>
-    },
-    {
-      path:"/coffee",
-      element:<Coffee/>
-    },
-    {path:'/checkout',
-      element:<PlaceOrder/>
-    },
-    {
-      path:"/order-confirm",
-      element:<ConfirmOrder/>
-    }
+  const routes=[    {
+    path: "/",
+    element: <Homepage/>,
+  },
+  {
+    path: "/about-us",
+    element: <AboutUs/>,
+  },
+  {
+    path: "/search",
+    element: <Search/>,
+  },
+  {
+    path: "/offers",
+    element: <Offers/>,
+  },
+  {
+    path: "/help",
+    element: <Help/>,
+  },
+  {
+    path: "/signin",
+    element: <SignIn/>,
+  },
+  {
+    path:"/termsCondition",
+    element:<TermsCondition/>
+  },
+  {
+    path: "/cart",
+    element: <Cart/>,
+  },
+ 
+  {
+    path: "/pizza",
+    element: <Pizza/>,
+  },
+  {
+    path:'/burger',
+    element:<Burger/>
+  },
+  {
+    path:'/biryani',
+    element:<Biryani/>
+  },
+  {
+    path:'/noodles',
+    element:<Noodles/>
+  },
+  {
+    path:'/drinks',
+    element:<Drinks/>
+  },
+  {
+    path:'/momos',
+    element:<Momos/>
+  },
+  {
+    path:'/shakes',
+    element:<Shakes/>
+  },
+  {
+    path:'/parathas',
+    element:<Parathas/>
+  },
+  {
+    path:"/coffee",
+    element:<Coffee/>
+  },
+  {path:'/checkout',
+    element:<PlaceOrder/>
+  },
+  {
+    path:"/order-confirm",
+    element:<ConfirmOrder/>
+  }
 
-
-    
-
-
-  ]);
-  return (
+]
+const router = createBrowserRouter(routes, { basename: import.meta.env.DEV ? '/' : '/react-vite-gh-pages/' })
+return (
     <>
      <RouterProvider router={router} />
     </>

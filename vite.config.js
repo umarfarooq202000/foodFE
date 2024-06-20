@@ -5,6 +5,5 @@ import react from '@vitejs/plugin-react-swc'
 export default defineConfig({
   
   base: "/ECommerceFoodApp",
-
   plugins: [react()],
 })
