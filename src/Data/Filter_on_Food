@@ -1,0 +1,33 @@
+const filter_on_food=[
+  {
+      name:'Sort',
+      subFilter:['Relevent','Delivery Time','Ratings','Veg/meat','Offers']
+  },
+  {
+      name:"Dilevery_Time",
+      subFilter:["Fast Delivery"]
+  },
+  {
+      name:'Cusine',
+      subFilter:['Afghani','Indian','Pakistani','American','Chinese','Korean','italian']
+  },
+  {
+      name:"Ratings",
+      subFilter:['Ratings 4.5+','Ratings 4+','Ratings 3.5+']
+  },
+  {
+      name:"Veg/Non-Veg",
+      subFilter:['Veg','meat']
+  },
+  {
+      name:'Offers',
+      subFilter:['Offers']
+  },
+  {
+      name:"Cost Of Two",
+      subFilter:['Rs.300-600','Less than 300']
+  }
+  
+]
+
+export default filter_on_food;
