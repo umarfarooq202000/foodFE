@@ -27,7 +27,7 @@ return (
 
      {/* getting search bar */}
      {  
-        SearchBar && !AddFilter && <div className=" flex justify-center w-[98vw] fixed top-20 z-50">
+        SearchBar && !AddFilter && <div className=" flex justify-center w-[100vw] fixed top-20 z-50">
                                 <div className="flex text-lg min-w-[360px] w-[50vw] h-[60px] border-4 border-borderColor bg-white z-50 shadow-xl ">
                                     <input onChange={SearchFoodFun}  type="text" placeholder="Search..." className="text-lg  min-w-[340px] w-[48vw] p-1 outline-none bg-transparent rounded-md "/>
                                     <RxCross2 className="cursor-pointer text-2xl text-mainColor font-bold " onClick={CutSearchbar}/>
@@ -40,9 +40,9 @@ return (
           <SideDrawer isOpen={isOpen} onClose={onClose} onOpen={onOpen} position={position}/>
        
     
-        <div className="flex flex-col w-[98vw] items-center max-h-max max-lg:w-[98vw] gap-7 my-20">{children}</div>
+        <div className="flex flex-col w-[100vw] items-center max-h-max max-lg:w-[100vw] gap-7 my-20">{children}</div>
         {/* FOOTER */}
-        <div className="w-[98vw] max-h-[100vh] ">
+        <div className="w-[100vw] max-h-[100vh] ">
           
               <div className="w-[100%] max-h-[350px] bg-lightGrey flex justify-around flex-wrap p-2 max-md:justify-center">
                     <p className="text-3xl font-bold text-grey w-[300px]  uppercase max-md:w-[90%] font-ubuntu max-sm:text-2xl">For better experience download the <span className="text-mainColor">App </span> now</p>
@@ -117,7 +117,7 @@ return (
                    
                           
               </footer>
-              <div className="w-[98vw] h-[40px] flex items-center justify-center bg-black text-white border-t border-white font-ubuntu text-sm">
+              <div className="w-[100vw] h-[40px] flex items-center justify-center bg-black text-white border-t border-white font-ubuntu text-sm">
                         <a href="" className="flex text-xs items-center  justify-center"> <FaCopyright className="text-lg"/> CopyRights Reserved <span className="text-greenColor">Food Corner</span></a>
                      </div>
 
