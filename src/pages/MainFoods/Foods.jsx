@@ -52,13 +52,13 @@ function Foods({ title }) {
 
   // foodData.filter(food => food.type.includes('pizza'))
 
-  // useEffect(()=>{
-  //   fetchData(`https://foodbe-8h5f.onrender.com/${food}`)
-  // },[])
+  useEffect(()=>{
+    fetchData(`https://foodbe-8h5f.onrender.com/${food}`)
+  },[])
 
-  useEffect(() => {
-    fetchData(` http://localhost:9000/${food}`);
-  }, []);
+  // useEffect(() => {
+  //   fetchData(` http://localhost:9000/${food}`);
+  // }, []);
 
   const { onOpen } = useDisclosure();
   // console.log(filtertype);
