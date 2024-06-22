@@ -14,7 +14,6 @@ function Toast({foodName,addAgain}) {
         setgreenToast(false)
     }
     
-  
     return (
     <>
     {
@@ -24,7 +23,7 @@ function Toast({foodName,addAgain}) {
            <RxCross2 onClick={cutred} className="text-md absolute top-0 right-0 hover:font-bold cursor-pointer "/>
            <div className="w-[90%] h-[90%] flex justify-around items-center">
 
-             <div><span className="text-xl font-bold">{foodName}</span> Alredy Added</div>
+             <div><span className="text-2xl font-bold">{foodName}</span> Alredy Added</div>
                     <div> 
                         <Link to="/cart" className="text-sm">
                                 <button className="w-[80px] h-[40px] border rounded-sm p-1 opacity-85 hover:opacity-100">View Cart</button>
@@ -38,7 +37,7 @@ function Toast({foodName,addAgain}) {
            <RxCross2 onClick={cutgreen} className="text-md absolute top-0 right-0 hover:font-bold cursor-pointer "/>
              <div className="w-[90%] h-[90%] flex justify-around items-center ">
 
-                   <div><span className="text-lg">{foodName}</span> Added</div>
+                   <div><span className="text-2xl font-bold">{foodName}</span> Added</div>
                     <div> 
                         <Link to="/cart" className="text-sm">
                                 <button className="w-[80px] h-[35px] border rounded-sm p-1 opacity-85 hover:opacity-100">View Cart</button>
