@@ -3,12 +3,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { useEffect, useState } from "react";
 import FoodCard from "../../Components/FoodCard";
-
 import { Link } from "react-router-dom";
-// import { CounterProvider } from "../../Context/Context";
-// import { ToastContainer, toast } from "react-toastify";
-// import 'react-toastify/dist/ReactToastify.css';
-
 import Loader from "../../Components/Loader";
 import AllFilters from "../../Components/AllFilters";
 import { UseMyContext } from "../../Context/MyContext";

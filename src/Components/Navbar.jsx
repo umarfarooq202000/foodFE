@@ -132,7 +132,6 @@ function Navbar({
                        )
                      :( <Link
                         to={`${menu.path}`}
-                        target="_blank"
                         className="font-medium flex items-center gap-2 text-grey hover:text-mainColor"
                       >
                         <span className="text-2xl">{menu.icon}</span>
