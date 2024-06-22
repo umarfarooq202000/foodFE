@@ -14,8 +14,6 @@ export default {
         'RockSalt': ["Rock Salt", 'cursive'],
         'julee':[ "Julee", 'cursive'],
         'Acme': ["Acme", 'sans-serif']
-
-
       },
       colors:{
         mainColor:"#e9692c",
@@ -23,7 +21,8 @@ export default {
         bg:"#F8F8FF",
         borderColor:"#DCDCDC",
         greenColor:"#1A7C26",
-        lightGrey:"#F4F4F4"
+        lightGrey:"#F4F4F4",
+        colorhelp:"#37718e",
       },
       transitionDuration:{
         transition:".5s ease all"
