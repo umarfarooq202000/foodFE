@@ -84,13 +84,11 @@ function Navbar({
       >
         <div className="max-w-[200px] h-[60px]  flex  items-center gap-1">
           <img
-            src="app\public\images\biryani.jpg.zip"
+            src="images/NEW_LOGO.svg"
             alt="Logo"
-            className="w-[40%] h-[100%]"
+            className="w-[60px] h-[60px]"
           />
-          <h1 className=" text-greenColor  text-3xl font-julee font-bold  ">
-            FC
-          </h1>
+        
           <input
             type="text"
             placeholder="location"

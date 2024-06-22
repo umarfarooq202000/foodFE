@@ -41,7 +41,7 @@ function SignUp({ onClose }) {
       
       });
     // Display success message using toast
-      toast.success(
+      toast(
         <div className="text-xl flex items-center justify-between">
           {response.data.message || 'User registered successfully'}
         </div>
@@ -50,7 +50,7 @@ function SignUp({ onClose }) {
 
       // Handle success (e.g., redirect or show success message)
     } catch (error) {
-      toast.error(
+      toast(
         <div className="text-xl flex items-center justify-between">
           {"SignUp Unsuccessfull"}
         </div>
@@ -61,7 +61,7 @@ function SignUp({ onClose }) {
    
   };
   return (
-    <div className=" w-[30vw] flex flex-col gap-4 max-sm:w-[350px] p-5">
+    <div className=" w-[40vw] flex flex-col gap-4 max-sm:w-[350px] p-5">
       <div className="text-3xl cursor-pointer" onClick={onClose}>
         <RxCross2 />
       </div>
@@ -175,7 +175,7 @@ function SignUp({ onClose }) {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="colored"
+        theme="light"
       />
     </div>
   );

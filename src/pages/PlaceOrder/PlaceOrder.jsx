@@ -141,7 +141,7 @@ function PlaceOrder() {
                         </StepLabel>
                       </div>
                       <div
-                        className={`w-[100%] max-h-[400px] text-xs font-ubuntu `}
+                        className={`w-[100%] max-h-[600px] text-xs font-ubuntu `}
                       >
                         <StepContent>
                           {index === 3 ? (

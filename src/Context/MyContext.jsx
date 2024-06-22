@@ -64,6 +64,10 @@ export const  MyContextProvider=({children})=>{
           const [LoginNumber,setLoginNumber]=useState("")
     //Address Details
           const [Address,setAddress]=useState("")
+   //toast       
+            const [greentoast,setgreenToast] = useState(false)
+            const [redtoast,setredToast] = useState(false)
+            const [toastfood,settoastfood]=useState("")
 
   
           const GetSearchbar=()=>{
@@ -128,7 +132,14 @@ export const  MyContextProvider=({children})=>{
         setLoginNumber,
 
         Address,
-        setAddress
+        setAddress,
+
+        greentoast,
+        setgreenToast,
+        redtoast,
+        setredToast,
+        toastfood,
+        settoastfood
     }
 
     return <MyContext.Provider value={AllObj}>{children}</MyContext.Provider>

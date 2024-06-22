@@ -17,11 +17,19 @@ import { UseMyContext } from "../Context/MyContext";
 
 function NavMenu({singinClick,CutMenu,FoodCount}) {
       // getting NavMenu
-      const { DisplayMenu }= UseMyContext()
+      const { DisplayMenu ,setActiveFilter,handleFilterChange}= UseMyContext()
 
       //getting search bar
       const {GetSearchbar}=UseMyContext()
      
+      const handleClick=(e)=>{
+        // console.log(e.target.innerText);
+         let value=e.target.textContent
+         if(value!==""){
+            handleFilterChange(value)
+         }
+       setActiveFilter(value)
+      }
  
     const nav_List=[
         { 
@@ -62,7 +70,7 @@ function NavMenu({singinClick,CutMenu,FoodCount}) {
 
     <>
        
-     <div className={`w-[100vw] ${ DisplayMenu ? "h-[70vh] p-5":"h-[0vh]"} flex flex-col items-center gap-10 z-50 fixed bg-white inset-0transition duration-500 ease-in-out   shadow-lg border-b-2 overflow-hidden `}>
+     <div className={`w-[100vw] ${ DisplayMenu ? "h-[80vh] p-3":"h-[0vh] "} flex flex-col items-center gap-10 z-50 fixed bg-white inset-0transition duration-500 ease-in-out   shadow-lg border-b-2 overflow-hidden `}>
         
           <div className={`w-[100%] cursor-pointer text-4xl text-mainColor items-end`}><RxCross2 onClick={CutMenu}/></div>
           {
@@ -88,16 +96,25 @@ function NavMenu({singinClick,CutMenu,FoodCount}) {
                               {menu.name}
                              </button>)
                              :(
-                              <Link
-                              to={`${menu.path}`}
-                              target="_blank"
-                              className="font-medium flex items-center gap-2 text-grey hover:text-mainColor"
-                            >
-                              <span className="text-2xl">{menu.icon}</span>
-                              {menu.name}
-                            </Link>
-                               
-                             )
+                              menu.name === "Offers"
+                              ? (
+                                <button 
+                                  onClick={handleClick }
+                                  className="font-medium flex items-center gap-2 text-grey hover:text-mainColor">
+                                  <span className="text-2xl">{menu.icon}</span>
+                                  Offers
+                                </button>
+                               )
+                             :( <Link
+                                to={`${menu.path}`}
+                                target="_blank"
+                                className="font-medium flex items-center gap-2 text-grey hover:text-mainColor"
+                              >
+                                <span className="text-2xl">{menu.icon}</span>
+                                {menu.name}
+                              </Link>)
+                              
+                            )
                         }
                         
                         </>

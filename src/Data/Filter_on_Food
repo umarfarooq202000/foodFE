@@ -1,7 +1,7 @@
 const filter_on_food=[
   {
       name:'Sort',
-      subFilter:['Relevent','Delivery Time','Ratings','Veg/meat','Offers']
+      subFilter:['Relevant','Delivery Time','Ratings','Veg/meat','Offers']
   },
   {
       name:"Dilevery_Time",

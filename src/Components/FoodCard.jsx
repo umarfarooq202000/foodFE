@@ -61,9 +61,9 @@ function FoodCard({name,text,img,price,AddToCart,id,ratings ,foodCardInCart}) {
   ? ( 
     filtertype==="Offers"
 
-        ?    <div  className=" w-[250px] max-h-[450px] flex flex-col gap-2 p-2  rounded-xl border border-transparent  hover:shadow-[1px_5px_6px_1px_rgba(0,0,0,0.2)]  transition-all duration-1000 ">
-              <span className="text-lg position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                20%
+        ?    <div data-aos="fade-up" className=" w-[250px] max-h-[450px] flex flex-col gap-2 p-2  rounded-xl border border-transparent  hover:shadow-[1px_5px_6px_1px_rgba(0,0,0,0.2)]  transition-all duration-200 ">
+              <span className=" absolute bg-red-500 rounded-lg text-white p-1 font-Acme bg-danger">
+                29%
               </span>
             <div className="w-[100%] h-[180px] bg-contain"><img className="w-[100%] h-[100%] rounded-lg" src={`${img}`} alt="img" /></div>
             <div className="flex justify-around ">
@@ -82,7 +82,7 @@ function FoodCard({name,text,img,price,AddToCart,id,ratings ,foodCardInCart}) {
             </div>
              </div>
        
-       :      <div  className=" w-[250px] max-h-[450px] flex flex-col gap-2 p-2  rounded-xl border border-transparent hover:shadow-[1px_5px_6px_1px_rgba(0,0,0,0.2)]  transition-all duration-1000 ">
+       :      <div data-aos="fade-up" className=" w-[250px] max-h-[450px] flex flex-col gap-2 p-2  rounded-xl border border-transparent hover:shadow-[1px_5px_6px_1px_rgba(0,0,0,0.2)]  transition-all duration-300 ">
                   <div className="w-[100%] h-[180px] bg-contain"><img className="w-[100%] h-[100%] rounded-lg" src={`${img}`} alt="img" /></div>
                   <div className="flex justify-around ">
                       <p className="text-xl text-grey font-medium font-Acme">{name}</p>
@@ -106,22 +106,22 @@ function FoodCard({name,text,img,price,AddToCart,id,ratings ,foodCardInCart}) {
     ( 
        filtertype==="Offers"
         ? 
-       (<div className=" w-[350px] max-h-[300px] flex gap-2 p-2 border-2 rounded-xl hover:scale-95 hover:shadow-sm transition-all ">
+       (<div data-aos="fade-right" className=" w-[350px] max-h-[300px] flex gap-2 p-2 border-2 rounded-xl hover:scale-95 hover:shadow-sm duration-300 ">
               <span className=" absolute bg-red-500 rounded-lg text-white p-1 font-Acme">
-                20%
+                29%
               </span>
         <div className="w-[50%] h-[150px] bg-contain">
                 <img className="w-[100%] h-[100%] rounded-lg" src={`${img}`} alt="img" />
               
           </div>
-        <div className="w-[50%] flex flex-col gap-2">
+        <div className="w-[50%] flex flex-col gap-1">
             <p className="text-lg text-grey font-bold">{name}</p>
-            <p className="text-md text-greenColor font-medium flex items-center ">{ratings}<MdOutlineStar/></p>
+                <p className="text-xl text-red-500 p-1 font-bold  rounded-md flex items-center gap-1">
+                   <span className="text-xs text-black ">Now At</span><FaIndianRupeeSign/>{price}
+                </p>
             <p className="text-xs text-grey max-sm:">{text.slice(0,80)}</p>
             <div className="flex justify-around"> 
-                <p className="text-lg text-greenColor p-1 font-bold  rounded-md flex items-center">
-                   <span className="text-xs text-black ">Now At</span> <FaIndianRupeeSign/>{price}
-                </p>
+                <p className="text-md text-greenColor font-medium flex items-center ">{ratings}<MdOutlineStar/></p>
                 <button id={id} onClick={AddToCart} className="bg-mainColor text-white p-1 border border-mainColor font-ubuntu rounded-md hover:scale-105 duration-300">Add to cart</button>
             </div>
         </div>
@@ -130,7 +130,7 @@ function FoodCard({name,text,img,price,AddToCart,id,ratings ,foodCardInCart}) {
         )
       :
        (
-       <div className=" w-[350px] max-h-[250px] flex gap-2 p-2 border-2 rounded-xl hover:scale-95 hover:shadow-sm transition-all ">
+       <div data-aos="fade-right" className=" w-[350px] max-h-[250px] flex gap-2 p-2 border-2 rounded-xl hover:scale-95 hover:shadow-sm transition-all ">
         <div className="w-[50%] h-[150px] bg-contain">
                 <img className="w-[100%] h-[100%] rounded-lg" src={`${img}`} alt="img" />
               

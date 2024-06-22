@@ -5,6 +5,7 @@ import './index.css'
 import  Modal  from 'react-modal';
 import { MyContextProvider } from './Context/MyContext.jsx';
 import { ThemeProvider, createTheme } from '@mui/material';
+import { ToastContainer } from 'react-toastify';
 
 Modal.setAppElement(document.getElementById('root')); // Set app element before rendering
 
@@ -27,7 +28,18 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <ThemeProvider theme={theme}>
        
          <App />
-       
+          
+      <ToastContainer
+        position="bottom-left"
+        autoClose={2500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        pauseOnHover
+        theme="colored"
+      />
          </ThemeProvider>,
        </MyContextProvider>
        

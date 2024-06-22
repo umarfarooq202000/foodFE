@@ -21,7 +21,7 @@ export default function SignIn({ onClose }) {
    
     toast.success(
       <div className="text-xl flex items-center justify-between">
-      {" Login with  successfully"}
+      {" User Authorisation not Bulid yet"}
        
       </div>,
      

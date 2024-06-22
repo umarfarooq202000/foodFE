@@ -45,12 +45,12 @@ return (
         <div className="w-[98vw] max-h-[100vh] ">
           
               <div className="w-[100%] max-h-[350px] bg-lightGrey flex justify-around flex-wrap p-2 max-md:justify-center">
-                    <p className="text-3xl font-bold text-grey w-[300px] uppercase max-md:w-[90%] font-julee ">For better experience download the <span className="text-mainColor">App </span> now</p>
-                    <div className="flex gap-5 py-3 ">
-                      <button className=" bg-black text-white rounded-md flex  items-center justify-center gap-2 border border-Lightgrey p-2">
+                    <p className="text-3xl font-bold text-grey w-[300px]  uppercase max-md:w-[90%] font-ubuntu max-sm:text-2xl">For better experience download the <span className="text-mainColor">App </span> now</p>
+                    <div className="h-[100px] flex gap-4 py-3 ">
+                      <button className=" bg-black text-white rounded-md flex  items-center justify-center gap-2 border border-Lightgrey p-2 hover:scale-95 duration-200 ">
                              <IoLogoGooglePlaystore className="text-2xl"/>
                               <span className="text-xl font-medium flex flex-col"><span className="text-xs">GET IT ON</span>Google Play</span></button>
-                      <button className=" bg-black text-white rounded-md flex  items-center justify-center gap-2 p-2">
+                      <button className=" bg-black text-white rounded-md flex  items-center justify-center gap-2 p-2  hover:scale-95 duration-200">
                               <RiAppleFill className="text-2xl"/>
                              <span className="text-xl font-medium  flex flex-col"><span className="text-xs ">DOWNLOAD ON THE </span> App Store</span></button>
                     </div>
