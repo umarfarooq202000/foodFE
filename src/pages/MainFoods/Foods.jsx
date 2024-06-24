@@ -7,10 +7,10 @@ import { UseMyContext } from "../../Context/MyContext";
 import AllFilters from "../../Components/AllFilters";
 import Navbar from "../../Components/Navbar";
 import Toast from "../../Components/Toast";
+import SideDrawer from "../../Components/SideDrawer";
+import Loader from "../../Components/Loader";
 
 function Foods({ title }) {
-
-  //foodfilter state for particular food item {pizza,burger,biryani,noodle,mmomos,shakes,etc}
 
   const [FilteredFoodData, setFilteredFoodData] = useState();
 
@@ -33,29 +33,22 @@ function Foods({ title }) {
     settoastfood
   } = UseMyContext();
 
-  console.log(FilteredFoodData)
-
-
   const food = title.toLowerCase();
   const fetchData = async (url) => {
     try {
       const response = await axios.get(url);
-      const data = response.data; // Access the data from the response
-      // console.log(data); // Log the fetched data to the console (or use it in your application)
-
+      const data = response.data; 
+      setloader(false);
       setFilteredFoodData(data);
       return data;
     } catch (error) {
-      console.error("Error fetching data:", error); // Handle errors appropriately
+      console.error("Error fetching data:", error); 
     }
   };
 
   useEffect(()=>{
     fetchData(`https://foodbe-8h5f.onrender.com/${food}`)
   },[])
-
-
-  const { onOpen } = useDisclosure();
 
   const SearchFoodFunInFilter = (e) => {
     const Searchfood = e.target.value;
@@ -80,7 +73,6 @@ function Foods({ title }) {
     });
   }
 
-  //fooditems count in cart
   const AddFood = () => {
     setFoodCount(FoodCount + 1);
   };
@@ -102,7 +94,6 @@ function Foods({ title }) {
     }, 3500);
   };
 
-  // CartFoodList to be added
   const AddToCart = (event) => {
     const foodId = event.target.id;
     // console.log("foodId :",foodId);
@@ -120,9 +111,18 @@ function Foods({ title }) {
       }, 1000);
     }
   };
+ 
+  const [loader, setloader] = useState(true);
+
+  const {onClose,onOpen,isOpen,position,singinClick,LocationClick}=useDisclosure()
 
   return (
-    <div className="flex flex-col items-center">
+    <>
+   { 
+      loader
+   ? <Loader/>
+   
+   : (<div className="flex flex-col items-center">
       {AddFilter ? (
         <AllFilters
           SearchFoodFun={SearchFoodFunInFilter}
@@ -130,9 +130,16 @@ function Foods({ title }) {
           isNavFilter
         />
       ) : (
-        <Navbar FoodCount={FoodCount} onOpen={onOpen} />
+        <Navbar FoodCount={FoodCount} onOpen={onOpen}   singinClick={singinClick}  LocationClick={LocationClick}
+/>
       )}
       <div className="w-[90vw] max-h[300vh] flex flex-col gap-4 item-center  ">
+      <SideDrawer
+          isOpen={isOpen}
+          onClose={onClose}
+          onOpen={onOpen}
+          position={position}
+        />
 
         {greentoast && <Toast foodName={toastfood} />}
         {redtoast && <Toast addAgain foodName={toastfood} />}
@@ -170,7 +177,9 @@ function Foods({ title }) {
         </div>
       </div>
      
-    </div>
+    </div>)
+    }
+    </>
   );
 }
 

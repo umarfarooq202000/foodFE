@@ -66,11 +66,9 @@ function Navbar({
     setDisplayMenu(false);
   };
  
-  const{filtertype,handleFilterChange,setActiveFilter,}=UseMyContext()
-  console.log(filtertype);
+  const{handleFilterChange,setActiveFilter}=UseMyContext()
   //to get offer food items
   const handleClick=(e)=>{
-    // console.log(e.target.innerText);
      let value=e.target.textContent
      if(value!==""){
         handleFilterChange(value)
@@ -84,9 +82,9 @@ function Navbar({
       >
         <div className="max-w-[200px] h-[60px]  flex  items-center gap-1">
           <img
-            src="images/NEW_LOGO.svg"
+            src="images/Yellow and White Minimalist Kitchen Logo123.png"
             alt="Logo"
-            className="w-[60px] h-[60px]"
+            className="w-[150px] h-[60px]"
           />
         
           <input

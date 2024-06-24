@@ -8,7 +8,7 @@ function Model({ modalIsOpen, closeModal, filter_on_food,payment }) {
   const customStyles_Model = {
     content: {
       width: "50%",
-      height: "452px",
+      maxheight: "450px",
       minWidth: "350px",
       top: "55%",
       left: "50%",
@@ -17,9 +17,8 @@ function Model({ modalIsOpen, closeModal, filter_on_food,payment }) {
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
       border: "none",
-      borderRadius: "20px",
       padding: "10px",
-      boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+      boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 5px",
     },
   };
   const customStyles_paymentodel = {
@@ -84,16 +83,11 @@ function Model({ modalIsOpen, closeModal, filter_on_food,payment }) {
               <div className="flex overflow-hidden">
                 <Filter filter_on_food={filter_on_food} />
               </div>
-              <div className="w-[100%] h-[50px]  border-t-2 border-borderColor flex items-center justify-around ">
+              <div className="w-[100%] h-[50px] border-t-2 border-borderColor flex items-center justify-end p-2  ">
+               
                 <button
                   onClick={closeModal}
-                  className="font-semibold text-mainColor text-lg"
-                >
-                  Clear Filter
-                </button>
-                <button
-                  onClick={closeModal}
-                  className=" bg-mainColor p-1 px-10 text-white font-semibold text-lg rounded-xl"
+                  className=" bg-mainColor p-2 px-5 text-white font-semibold text-lg rounded-xl"
                 >
                   Apply
                 </button>

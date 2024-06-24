@@ -33,13 +33,13 @@ function AboutUs() {
       text: "Our web developer team excels in creating dynamic, responsive websites, ensuring seamless user experiences. We specialize in front-end and back-end development, utilizing the latest technologies for optimal performance and security.",
     },
     {
-      name: "Umar",
+      name: "Tim David",
       image:
         "https://i.pinimg.com/236x/ec/b6/0e/ecb60edf9eca0f131220eea74a9474f6.jpg",
       text: "Our web developer team excels in creating dynamic, responsive websites, ensuring seamless user experiences. We specialize in front-end and back-end development, utilizing the latest technologies for optimal performance and security.",
     },
     {
-      name: "Umar",
+      name: "Amit",
       image:
         "https://i.pinimg.com/236x/ec/b6/0e/ecb60edf9eca0f131220eea74a9474f6.jpg",
       text: "Our web developer team excels in creating dynamic, responsive websites, ensuring seamless user experiences. We specialize in front-end and back-end development, utilizing the latest technologies for optimal performance and security.",
@@ -71,10 +71,16 @@ function AboutUs() {
   ];
   return (
     <div className="w-[98vw] max-h-[500vh] bg-white flex flex-col items-center max-md:justify-center gap-10 font-mono max-lg:w-[100vw]">
-       <header className="w-[90vw] h-[60px] bg-mainColor rounded-full flex flex-col justify-center items-center mt-3 border-2 border-white">
-             <h1 className="text-3xl font-bold text-white">About Us</h1>
+       <header className="w-[100%] h-[80px] flex justify-around items-center  border-b-2 fixed top-0 bg-white">
+       <img
+            src="images/Yellow and White Minimalist Kitchen Logo123.png"
+            alt="Logo"
+            className="w-[150px] h-[60px]"
+          />
+             <h1 className="text-3xl font-bold ">
+              About</h1>
       </header>
-        <section className="w-[100%] max-h-[40vh] flex  justify-center items-center  ">
+        <section className="w-[100%] max-h-[40vh] flex  justify-center items-center  mt-24 ">
           <div className="w-[40%] flex flex-col justify-center items-start  max-md:w-[90%]">
             <h2 className="text-3xl font-bold">Our Mission</h2>
             <p>
@@ -116,7 +122,7 @@ function AboutUs() {
                   <button className="  " onClick={nextBtn}><MdArrowBackIos/></button>
                   <button  className=" " onClick={prevBtn}><MdArrowForwardIos/></button>
              </div>
-              <TeamMembers CourselIndex={CourselIndex}>
+              <TeamMembers $courselindex={CourselIndex}>
                 {TeamsMember.map((member) => (
                   <div
                     key={member.name}
@@ -153,7 +159,7 @@ function AboutUs() {
               <Formik>
                 <Form className="w-[100%]  flex flex-col gap-3">
                   <div className="w-[100%] h-[100px] flex flex-col justify-center gap-2">
-                    <h2 className="text-3xl font-medium font-ubuntu">
+                    <h2 className="text-2xl font-medium font-ubuntu">
                       Send Us a message
                     </h2>
                     <p className="text-xs">send us message and we will respond within 24hrs</p>
@@ -207,7 +213,7 @@ function AboutUs() {
                     <Field
                       as="textarea"
                       name="description"
-                      style={{ width: "350px", height: "100px" }}
+                      style={{ width: "100%", height: "100px" }}
                       className="outline-none p-1 rounded-sm border w-[100%] "
                     />
                   </div>
@@ -222,7 +228,7 @@ function AboutUs() {
             </div>
             <div className="w-[320px] max-h-[100%]  bg-bg border p-2 flex flex-col max-sm:w-[100%] rounded-2xl">
               <div className="w-[100%] h-[100px] flex items-center justify-center border-b">
-                <h1 className="text-3xl font-medium font-ubuntu">
+                <h1 className="text-2xl font-medium font-ubuntu">
                   Contact Information
                 </h1>
               </div>
@@ -269,7 +275,7 @@ const TeamMembers=styled.div`
    
   display: flex;
   gap: 40px;
-  transform: ${(props) => `translateX(${props.CourselIndex}px)`};
+  transform: ${(props) => `translateX(${props.courselindex}px)`};
   transition: transform 0.3s ease;
   @media screen and (max-width: 468px) {
     gap: 4px;

@@ -101,19 +101,19 @@ const { onOpen, onClose, isOpen, position, singinClick} = useDisclosure();
       <div
         className={`flex  items-center justify-around  w-[100vw] h-[80px] border-b-2 shadow-lg fixed z-50 bg-white  `}
         >
-        <div className="w-[300px] h-[80px]  flex items-center justify-center  gap-4">
-          <img src="https://i.pinimg.com/236x/86/fa/02/86fa02f165fd0db848d2d13e5e484758.jpg" alt="Logo" className="w-[30%] h-[100%]" />
-          <p className=" text-2xl font-bold">HELP</p>
+          
+        <div className="w-[200px] h-[80px]  flex items-center justify-center ">
+          <p className=" text-2xl font-bold  ">HELP</p>
         </div>
-        <div className=" w-[300px] h-[40px]   flex gap-10 ">
+        <div className=" w-[300px] h-[40px] flex gap-5 ">
           <Link
-            to="/help"
+            to="/about-us"
             className="font-medium flex items-center gap-2 text-grey hover:text-mainColor"
           >
             <span className="text-2xl">
               <MdOutlineBusinessCenter />
             </span>
-            About Us
+            AboutUs
           </Link>
           <button
             onClick={singinClick}

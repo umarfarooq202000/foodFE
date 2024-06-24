@@ -2,7 +2,6 @@ import { RxCross2 } from "react-icons/rx";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
-
 import { UseMyContext } from "../../Context/MyContext";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -18,13 +17,10 @@ export default function SignIn({ onClose }) {
 
   //toast added when food is added to cart
   const Addtoast1 = () => {
-   
     toast.info(
       <div className="text-xl flex items-center justify-between">
-      {" User Authorisation not Bulid yet"}
-       
-      </div>,
-     
+        {" User Authorisation not Bulid yet"}
+      </div>
     );
   };
 
@@ -100,7 +96,6 @@ export default function SignIn({ onClose }) {
         pauseOnHover
         theme="light"
       />
-
     </div>
   );
 }

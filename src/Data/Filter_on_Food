@@ -1,19 +1,12 @@
 const filter_on_food=[
-  {
-      name:'Sort',
-      subFilter:['Relevant','Delivery Time','Ratings','Veg/meat','Offers']
-  },
-  {
-      name:"Dilevery_Time",
-      subFilter:["Fast Delivery"]
-  },
+ 
   {
       name:'Cusine',
       subFilter:['Afghani','Indian','Pakistani','American','Chinese','Korean','italian']
   },
   {
       name:"Ratings",
-      subFilter:['Ratings 4.5+','Ratings 4+','Ratings 3.5+']
+      subFilter:['Ratings 4+']
   },
   {
       name:"Veg/Non-Veg",
@@ -24,9 +17,14 @@ const filter_on_food=[
       subFilter:['Offers']
   },
   {
-      name:"Cost Of Two",
-      subFilter:['Rs.300-600','Less than 300']
-  }
+    name:"Food",
+    subFilter:['pizza','burger','noodles','shakes','drinks','parathas','Biryani']
+  },
+  {
+    name:'Coffee',
+    subFilter:['Coffee']
+  },
+
   
 ]
 

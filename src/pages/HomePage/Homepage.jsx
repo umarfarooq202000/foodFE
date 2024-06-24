@@ -16,6 +16,9 @@ import { FaRegArrowAltCircleRight } from "react-icons/fa";
 import { FaRegArrowAltCircleLeft } from "react-icons/fa";
 
 function Homepage() {
+
+
+  // const AvailableFilters=['relevant','Afghani','Indian','Pakistani','American','Chinese','Korean','italian','Ratings 4+','Veg','meat','Offers']
   const food_list = [
     {
       name: "Biryani",
@@ -102,7 +105,6 @@ function Homepage() {
     setIsHovering(false);
   };
 
-  // loader
   const [loader, setloader] = useState(true);
 
   //fooditems count in cart
@@ -133,8 +135,7 @@ function Homepage() {
     //   }
     // );
   };
-
-  ////toast added when food is already added to cart
+  //toast added when food is already added to cart
   const Addtoast2 = (foodName) => {
     settoastfood(foodName);
     setredToast(true);
@@ -142,8 +143,6 @@ function Homepage() {
       setredToast(false);
     }, 3500);
   };
-
-  // CartFoodList to be added
   const AddToCart = (event) => {
     const foodId = event.target.id;
     const foodItems = FoodData.find((item) => item.id == foodId);
@@ -161,18 +160,15 @@ function Homepage() {
       }, 1000);
     }
   };
-
-  //data fetchinf function
   const fetchData = async (url) => {
     try {
       const response = await axios.get(url);
-      const data = response.data; // Access the data from the response
+      const data = response.data; 
       setloader(false);
-      //  console.log(data); // Log the fetched data to the console (or use it in your application)
       setFoodData(data);
       return data;
     } catch (error) {
-      console.error("Error fetching data:", error); // Handle errors appropriately
+      console.error("Error fetching data:", error); 
     }
   };
 
@@ -180,10 +176,10 @@ function Homepage() {
     fetchData("https://foodbe-8h5f.onrender.com/fooddata");
   }, []);
 
+
   const SearchFoodFun = (e) => {
     const food_search = e.target.value;
     handleFilterChange("relevant");
-    //console.log(FoodData);
     if (FoodData.length > 0) {
       const list_Searchfood = FoodData.filter((food) =>
         food.name.toLowerCase().includes(food_search.toLowerCase())
@@ -191,13 +187,11 @@ function Homepage() {
       setsearchFood(list_Searchfood);
     }
   };
-
+  
   //change navbar into filters
   {
     window.addEventListener("scroll", function () {
-      // console.log(window.scrollY)
-
-      if (this.window.scrollY > 450) {
+      if (this.window.scrollY > 350) {
         setAddFilter(true);
       } else {
         setAddFilter(false);
@@ -267,20 +261,17 @@ function Homepage() {
                 <div className=" w-[100%] flex gap-2 justify-end text-3xl text-gray-400 px-3 duration-200">
                   <p
                     onClick={nextBtn}
-                    className=" cursor-pointer hover:text-gray-500"
+                   className=" cursor-pointer hover:text-gray-500"
                   >
                     <FaRegArrowAltCircleLeft />
                   </p>
-                  <p
-                    onClick={prevBtn}
-                    className=" cursor-pointer hover:text-gray-500"
-                  >
+                  <p onClick={prevBtn} className=" cursor-pointer hover:text-gray-500">
                     <FaRegArrowAltCircleRight />
                   </p>
                 </div>
 
                 <div className=" w-[100%]  bg-white  max-sm:gap-0 overflow-hidden p-2">
-                  <CustomCoursel CourselIndex={CourselIndex}>
+                  <CustomCoursel $courselindex={CourselIndex}>
                     {food_list.map((item) => (
                       <Link
                         key={item.name}
@@ -334,7 +325,8 @@ function Homepage() {
                 </div>
               ) : (
                 <div className="flex flex-row  justify-center flex-wrap gap-10 w-[100%] max-h[200vh] py-4 max-sm:gap-2">
-                  {FoodData ? (
+                  { FoodData ? 
+                  (
                     FoodData.filter((item) =>
                       item.type.toLowerCase().includes(filtertype.toLowerCase())
                     ).map((item) => (
@@ -367,11 +359,12 @@ const CustomCoursel = styled.div`
   width: 100%;
   display: flex;
   gap: 40px;
-  transform: ${(props) => `translateX(${props.CourselIndex}px)`};
+  transform: ${(props) => `translateX(${props.courselindex}px)`};
   transition: transform 0.3s ease;
   @media screen and (max-width: 468px) {
     gap: 4px;
   }
+ 
 `;
 
 export default Homepage;

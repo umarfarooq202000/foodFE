@@ -75,7 +75,6 @@ function HomePageLayout({
           LocationClick={LocationClick}
         />
       )}
-
       <SideDrawer
         isOpen={isOpen}
         onClose={onClose}
@@ -90,7 +89,7 @@ function HomePageLayout({
       <div className="w-[100vw] max-h-[100vh] ">
         <div className="w-[100%] max-h-[350px] bg-lightGrey flex justify-around flex-wrap p-2 max-md:justify-center">
           <p className="text-3xl font-bold text-grey w-[300px]  uppercase max-md:w-[90%] font-ubuntu max-sm:text-2xl">
-            For better experience download the{" "}
+            For better experience download the
             <span className="text-mainColor">App </span> now
           </p>
           <div className="h-[100px] flex gap-4 py-3 ">
@@ -117,7 +116,7 @@ function HomePageLayout({
                   alt="Logo"
                   className="w-[50px] h-[50px]"
                 />
-                <h1 className="text-xl font-Acme">FOOD CORER</h1>
+                {/* <h1 className="text-xl font-Acme">FOOD CORER</h1> */}
               </p>
               <p>2024 Bundl TechnologiesPvt.Ltd</p>
 
@@ -143,18 +142,18 @@ function HomePageLayout({
             </ul>
 
             <ul className="flex flex-col gap-4  w-[150px] justify-start">
-              <p className="flex gap-2 items-center ">
+             
                 <h1 className="text-2xl font-Acme">Contact Us</h1>
-              </p>
+           
               <li> Help & Support</li>
               <li>Partner wth us</li>
               <li>Ride with us</li>
             </ul>
 
             <ul className="flex flex-col gap-4 justify-start w-[150px]">
-              <p className="flex gap-2 ">
+             
                 <h1 className="text-2xl font-Acme">Legal</h1>
-              </p>
+            
               <li> Terms & Conditions</li>
               <li>Cooie policy</li>
               <li>Privacy</li>
@@ -162,9 +161,7 @@ function HomePageLayout({
             </ul>
 
             <ul className="flex flex-col gap-4 justify-start w-[150px]">
-              <p className="flex gap-2 ">
-                <h1 className="text-2xl font-Acme">We Delier To:</h1>
-              </p>
+              <h1 className="text-2xl font-Acme">We Delier To:</h1>
               <li>Delhi</li>
               <li>Mumbai</li>
               <li>Kolkata</li>
@@ -176,12 +173,12 @@ function HomePageLayout({
 
         <div className="w-[100vw] h-[40px] flex items-center justify-center bg-black text-white border-t border-white font-ubuntu text-sm">
           <a href="" className="flex text-xs items-center  justify-center">
-            {" "}
-            <FaCopyright className="text-lg" /> CopyRights Reserved{" "}
+            
+            <FaCopyright className="text-lg" /> CopyRights Reserved
             <span className="ml-1 text-mainColor"> Food Corner</span>
             <span className="ml-1">
-              {" "}
-              || Bulid by{" "}
+              
+              || Bulid by
               <span className="text-md text-yellow-500">Umar farooq</span>
             </span>
           </a>

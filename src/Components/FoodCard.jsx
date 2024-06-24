@@ -55,12 +55,13 @@ function FoodCard({
             </div>
           </div>
         </div>
+       
       ) : windowWidth > 450 ? (
         // food large screen
         filtertype === "Offers" ? (
           <div
             data-aos="fade-up"
-            className=" w-[250px] max-h-[450px] flex flex-col gap-2 p-2  rounded-xl border border-transparent  hover:shadow-[1px_5px_6px_1px_rgba(0,0,0,0.2)]  transition-all duration-200 "
+            className=" w-[250px] max-h-[450px] flex flex-col gap-2 p-2  rounded-xl border border-transparent  hover:bg-lightGrey   hover:shadow-[0px_5px_6px_1px_rgba(0,0,0,0.2)] transition-all duration-200 "
           >
             <span className=" absolute bg-red-500 rounded-lg text-white p-1 font-Acme bg-danger">
               29%
@@ -100,7 +101,7 @@ function FoodCard({
         ) : (
           <div
             data-aos="fade-up"
-            className=" w-[250px] max-h-[450px] flex flex-col gap-2 p-2  rounded-xl border border-transparent hover:shadow-[1px_5px_6px_1px_rgba(0,0,0,0.2)]  transition-all duration-300 "
+            className=" w-[250px] max-h-[450px] flex flex-col gap-2 p-2  rounded-xl border border-transparent hover:bg-lightGrey   hover:shadow-[0px_5px_6px_1px_rgba(0,0,0,0.2)]  transition-all duration-300 "
           >
             <div className="w-[100%] h-[180px] bg-contain">
               <img
