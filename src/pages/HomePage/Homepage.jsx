@@ -176,12 +176,8 @@ function Homepage() {
     }
   };
 
-  // useEffect(() => {
-  //   fetchData("https://foodbe-8h5f.onrender.com/fooddata");
-  // }, []);
-
   useEffect(() => {
-    fetchData(" http://localhost:9000/fooddata");
+    fetchData("https://foodbe-8h5f.onrender.com/fooddata");
   }, []);
 
   const SearchFoodFun = (e) => {
@@ -195,7 +191,7 @@ function Homepage() {
       setsearchFood(list_Searchfood);
     }
   };
-  
+
   //change navbar into filters
   {
     window.addEventListener("scroll", function () {
@@ -271,11 +267,14 @@ function Homepage() {
                 <div className=" w-[100%] flex gap-2 justify-end text-3xl text-gray-400 px-3 duration-200">
                   <p
                     onClick={nextBtn}
-                   className=" cursor-pointer hover:text-gray-500"
+                    className=" cursor-pointer hover:text-gray-500"
                   >
                     <FaRegArrowAltCircleLeft />
                   </p>
-                  <p onClick={prevBtn} className=" cursor-pointer hover:text-gray-500">
+                  <p
+                    onClick={prevBtn}
+                    className=" cursor-pointer hover:text-gray-500"
+                  >
                     <FaRegArrowAltCircleRight />
                   </p>
                 </div>
@@ -373,7 +372,6 @@ const CustomCoursel = styled.div`
   @media screen and (max-width: 468px) {
     gap: 4px;
   }
- 
 `;
 
 export default Homepage;

@@ -21,7 +21,6 @@ function SideDrawer({isOpen,onClose,position}) {
             onClose={onClose}
             anchor={"left"}
          
-           
           >
                <Location onClose={onClose}/>
           </SwipeableDrawer>
