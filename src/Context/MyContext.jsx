@@ -50,7 +50,8 @@ export const  MyContextProvider=({children})=>{
           const SGST_= TotalPayment *.05
           const CGST_= TotalPayment *.05
           const deliveryCharge = TotalPayment > 500 ? 0 : 50
-
+      //search food
+      const [searchFood, setsearchFood] = useState([]);
           
     //Cart effect on hover on cart option
           const [isHovering, setIsHovering] = useState(false);
@@ -86,6 +87,9 @@ export const  MyContextProvider=({children})=>{
         
         CartFoodList,
         setCartFoodList,
+
+        searchFood,
+        setsearchFood,
         
         TotalPayment,
         SGST_,

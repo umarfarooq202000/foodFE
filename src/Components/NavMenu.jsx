@@ -34,7 +34,7 @@ function NavMenu({singinClick,CutMenu,FoodCount}) {
     const nav_List=[
         { 
           path:"/about-us",
-          name:'Corporate',
+          name:'About Us',
           icon:<MdOutlineBusinessCenter/>
         },
         {

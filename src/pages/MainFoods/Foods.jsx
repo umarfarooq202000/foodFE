@@ -9,7 +9,9 @@ import Navbar from "../../Components/Navbar";
 import Toast from "../../Components/Toast";
 
 function Foods({ title }) {
+
   //foodfilter state for particular food item {pizza,burger,biryani,noodle,mmomos,shakes,etc}
+
   const [FilteredFoodData, setFilteredFoodData] = useState();
 
   //getting needen state and function from useMyContext
@@ -31,12 +33,10 @@ function Foods({ title }) {
     settoastfood
   } = UseMyContext();
 
-  //console.log(FilteredFoodData)
-  console.log(CartFoodList);
+  console.log(FilteredFoodData)
+
 
   const food = title.toLowerCase();
-  //console.log(food);
-
   const fetchData = async (url) => {
     try {
       const response = await axios.get(url);
@@ -50,27 +50,22 @@ function Foods({ title }) {
     }
   };
 
-  // foodData.filter(food => food.type.includes('pizza'))
+  // useEffect(()=>{
+  //   fetchData(`https://foodbe-8h5f.onrender.com/${food}`)
+  // },[])
 
-  useEffect(()=>{
-    fetchData(`https://foodbe-8h5f.onrender.com/${food}`)
-  },[])
-
-  // useEffect(() => {
-  //   fetchData(` http://localhost:9000/${food}`);
-  // }, []);
+  useEffect(() => {
+    fetchData(` http://localhost:9000/${food}`);
+  }, []);
 
   const { onOpen } = useDisclosure();
-  // console.log(filtertype);
 
   const SearchFoodFunInFilter = (e) => {
     const Searchfood = e.target.value;
-    //console.log(FoodData);
     if (FilteredFoodData.length > 0) {
       const list_Searchfood = FilteredFoodData.filter((food) =>
         food.name.toLowerCase().includes(Searchfood.toLowerCase())
       );
-      // console.log(list_Searchfood);
       setFilteredFoodData(list_Searchfood);
     }
   };
@@ -128,6 +123,7 @@ function Foods({ title }) {
       }, 1000);
     }
   };
+
   return (
     <div className="flex flex-col items-center">
       {AddFilter ? (
@@ -159,9 +155,9 @@ function Foods({ title }) {
 
         {/* FOOD DISPLAY DIV */}
         <div className="flex flex-row  flex-wrap gap-10 w-[100%] max-h[200vh] max-sm:gap-1  ">
-          {FilteredFoodData &&
+          { FilteredFoodData &&
             FilteredFoodData.filter((item) =>
-              item.type.includes(filtertype.toLowerCase())
+              item.type.toLowerCase().includes(filtertype.toLowerCase())
             ).map((item, index) => (
               <FoodCard
                 AddToCart={AddToCart}
@@ -176,19 +172,7 @@ function Foods({ title }) {
             ))}
         </div>
       </div>
-      {/* <ToastContainer 
-            position="bottom-center"
-            autoClose={2500}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="colored"  
-            
-        /> */}
+     
     </div>
   );
 }

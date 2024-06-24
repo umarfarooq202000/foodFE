@@ -19,7 +19,7 @@ export default function SignIn({ onClose }) {
   //toast added when food is added to cart
   const Addtoast1 = () => {
    
-    toast.success(
+    toast.info(
       <div className="text-xl flex items-center justify-between">
       {" User Authorisation not Bulid yet"}
        
@@ -98,7 +98,7 @@ export default function SignIn({ onClose }) {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="colored"
+        theme="light"
       />
 
     </div>

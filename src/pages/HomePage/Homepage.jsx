@@ -1,5 +1,4 @@
 import HomePageLayout from "../../Components/HomePageLayout";
-import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { useEffect, useState } from "react";
 import FoodCard from "../../Components/FoodCard";
@@ -11,28 +10,12 @@ import CartListedFood from "../Cart/CartFoodList";
 import NoFoodOnFilter from "../../Components/NoFoodOnFilter";
 import axios from "axios";
 import Toast from "../../Components/Toast";
+import styled from "styled-components";
+
+import { FaRegArrowAltCircleRight } from "react-icons/fa";
+import { FaRegArrowAltCircleLeft } from "react-icons/fa";
 
 function Homepage() {
-  const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 5,
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2,
-    },
-    mobile: {
-      breakpoint: { max: 364, min: 0 },
-      items: 1,
-    },
-  };
-
   const food_list = [
     {
       name: "Biryani",
@@ -76,9 +59,20 @@ function Homepage() {
     },
   ];
 
+  const [CourselIndex, setCourserIndex] = useState(0);
+  const nextBtn = () => {
+    CourselIndex > 0 ? setCourserIndex(CourselIndex + 100) : setCourserIndex(0);
+  };
+  const prevBtn = () => {
+    CourselIndex > -800
+      ? setCourserIndex(CourselIndex - 100)
+      : setCourserIndex(-500);
+  };
+
   //Gettting needed value from useMyContext
   const {
     filtertype,
+    handleFilterChange,
     AddFilter,
     setAddFilter,
     CartFoodList,
@@ -94,8 +88,10 @@ function Homepage() {
     redtoast,
     setredToast,
     toastfood,
-    settoastfood
-     } = UseMyContext();
+    settoastfood,
+    searchFood,
+    setsearchFood,
+  } = UseMyContext();
 
   //Getting CartListfOOD Component on Hover on Cart option
   const handleMouseOver = () => {
@@ -180,29 +176,26 @@ function Homepage() {
     }
   };
 
-  useEffect(() => {
-    fetchData("https://foodbe-8h5f.onrender.com/fooddata");
-  }, []);
-
   // useEffect(() => {
-  //   fetchData(" http://localhost:9000/fooddata");
+  //   fetchData("https://foodbe-8h5f.onrender.com/fooddata");
   // }, []);
 
-  //search food function
-  const [searchFood, setsearchfood] = useState([]);
+  useEffect(() => {
+    fetchData(" http://localhost:9000/fooddata");
+  }, []);
 
   const SearchFoodFun = (e) => {
-    const Searchfood = e.target.value;
+    const food_search = e.target.value;
+    handleFilterChange("relevant");
     //console.log(FoodData);
     if (FoodData.length > 0) {
       const list_Searchfood = FoodData.filter((food) =>
-        food.name.toLowerCase().includes(Searchfood.toLowerCase())
+        food.name.toLowerCase().includes(food_search.toLowerCase())
       );
-      console.log(list_Searchfood);
-      setsearchfood(list_Searchfood);
+      setsearchFood(list_Searchfood);
     }
   };
-
+  
   //change navbar into filters
   {
     window.addEventListener("scroll", function () {
@@ -268,45 +261,50 @@ function Homepage() {
 
             <div className="w-[75%] h-[100%]  max-lg:w-[100%] ">
               {/* upper part*/}
-              <div className="flex flex-col gap-5 w-[100%] max-h-[500px] items-center p-1 border-b-2 border-gray-300 ">
+              <div className="flex flex-col gap-1 w-[100%] max-h-[500px] items-center p-1 border-b-2 border-gray-300 ">
                 <div className="h-[35px] w-[100%] flex items-center justify-between ">
                   <p className="text-3xl font-bold font-julee text-grey mt-2">
                     What is on your mind ?
                   </p>
                 </div>
                 {/* List of food server in top of home page below "What is on your mind?" */}
-                <div className=" flex flex-col w-[100%] ">
-                  <Carousel
-                    className="z-5 "
-                    responsive={responsive}
-                    swipeable={true}
-                    draggable={true}
-                    centerMode={true}
-                    removeArrowOnDeviceType={["tablet", "mobile"]}
+                <div className=" w-[100%] flex gap-2 justify-end text-3xl text-gray-400 px-3 duration-200">
+                  <p
+                    onClick={nextBtn}
+                   className=" cursor-pointer hover:text-gray-500"
                   >
+                    <FaRegArrowAltCircleLeft />
+                  </p>
+                  <p onClick={prevBtn} className=" cursor-pointer hover:text-gray-500">
+                    <FaRegArrowAltCircleRight />
+                  </p>
+                </div>
+
+                <div className=" w-[100%]  bg-white  max-sm:gap-0 overflow-hidden p-2">
+                  <CustomCoursel CourselIndex={CourselIndex}>
                     {food_list.map((item) => (
                       <Link
                         key={item.name}
                         to={item.path}
-                        className={`w-[200px] h-[180px]  flex flex-col gap-2 items-center justify-center cursor-pointer  `}
+                        className={`w-[200px] h-[180px]  flex flex-col  items-center justify-center cursor-pointer `}
                       >
-                        <div className=" w-[130px] h-[130px] rounded-full  overflow-hidden max-sm:scale-75">
+                        <div className=" w-[130px] h-[130px] rounded-full  overflow-hidden ">
                           <img
                             src={`${item.img}`}
                             alt="img"
-                            className=" w-[130px] h-[130px]  hover:scale-105 rounded-full duration-300 "
+                            className=" w-[130px] h-[130px]  hover:scale-105 rounded-full duration-300 max-sm:scale-75 "
                           />
                         </div>
 
-                        <p className="text-2xl text-grey  font-Acme">
+                        <p className="text-2xl text-grey  font-Acme max-sm:scale-75">
                           {item.name}
                         </p>
                       </Link>
                     ))}
-                  </Carousel>
+                  </CustomCoursel>
                 </div>
                 {/* filters */}
-                <div className="flex flex-col gap-5 w-[100%] max-h-[50vh] p-2 ">
+                <div className="flex flex-col gap-3 w-[100%] max-h-[50vh] p-2 ">
                   <div>
                     <p className="text-4xl font-bold text-grey font-julee">
                       Our food Menu...
@@ -321,8 +319,7 @@ function Homepage() {
               {/*SEARCH FOOD LOGIC */}
 
               {searchFood.length > 0 ? (
-               
-               <div className="flex flex-row  justify-center flex-wrap gap-10 w-[100%] max-h[200vh] py-4 max-sm:gap-2 ">
+                <div className="flex flex-row  justify-center flex-wrap gap-10 w-[100%] max-h[200vh] py-4 max-sm:gap-2 ">
                   {searchFood.map((item) => (
                     <FoodCard
                       AddToCart={AddToCart}
@@ -360,36 +357,23 @@ function Homepage() {
                   )}
                 </div>
               )}
-              {/* FOOD DISPLAY DIV
-              <div className="flex flex-row justify-center flex-wrap gap-10 w-[100%] max-h[200vh] py-2 max-sm:gap-2 ">
-                {
-                  FoodData && FoodData.length > 0?
-                  FoodData.filter((item) =>
-                    item.type.includes(filtertype.toLowerCase())
-                  ).map((item) => (
-                    <FoodCard
-                      AddToCart={AddToCart}
-                      key={item.id}
-                      id={item.id}
-                      name={item.name}
-                      text={item.text}
-                      img={item.image}
-                      price={item.price}
-                      ratings={item.ratings}
-                    />
-                  ))
-                  :
-                  <div className="flex items-start justify-center w-[100%] h-[400px]  bg-red-900"><NoFoodOnFilter/></div>
-                }
-              </div> */}
             </div>
           </div>
         </>
       )}
-
-     
     </HomePageLayout>
   );
 }
+const CustomCoursel = styled.div`
+  width: 100%;
+  display: flex;
+  gap: 40px;
+  transform: ${(props) => `translateX(${props.CourselIndex}px)`};
+  transition: transform 0.3s ease;
+  @media screen and (max-width: 468px) {
+    gap: 4px;
+  }
+ 
+`;
 
 export default Homepage;

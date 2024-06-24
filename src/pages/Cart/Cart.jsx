@@ -53,7 +53,7 @@ const DeleteAll=(e)=>{
       >
         <div className="w-[300px] h-[80px]  flex items-center justify-center  gap-4">
           <img src="https://i.pinimg.com/236x/86/fa/02/86fa02f165fd0db848d2d13e5e484758.jpg" alt="Logo" className="w-[30%] h-[100%]" />
-          <p className="font-bold">SECURE CHECKOUT</p>
+          <p className=" text-3xl font-bold">CART</p>
         </div>
         <div className=" w-[300px] h-[40px]   flex gap-10 ">
           <Link
@@ -82,16 +82,12 @@ const DeleteAll=(e)=>{
           position={position}
         />
       </div>
-
-     
-
       {/*lowersection*/}
       <div className="w-[98vw] max-h-[200vh] flex  items-center justify-center">
         <div className="w-[80%] max-h-[200vh] flex justify-center max-sm:w-[100%]  max-md:flex-col mt-5 ">
-          {/*LEFT SECTION*/}
+      {/*LEFT SECTION*/}
          
           {
-            
             CartFoodList && !CartFoodList.length ==0 
             ? <div  className=" min-w-[350px] max-h-[120vh] flex flex-col mt-28  max-md:hidden overflow-auto border">
                 <div className="bg-white  w-[100%] top-24  ">

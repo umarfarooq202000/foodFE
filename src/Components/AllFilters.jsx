@@ -9,16 +9,22 @@ import { UseMyContext } from "../Context/MyContext";
 function AllFilters({isNavFilter,SearchFoodFun}) {
   
   //setting up the filter on foodCards
-  const{filtertype,handleFilterChange,setActiveFilter,ActiveFilter}=UseMyContext()
+  const{filtertype,handleFilterChange,setActiveFilter,ActiveFilter,setsearchFood}=UseMyContext()
   
 
   const handleClick=(e)=>{
     // console.log(e.target.innerText);
+      setsearchFood([])
      let value=e.target.textContent
-     if(value!==""){
-        handleFilterChange(value)
+     if(value == " "){
+      handleFilterChange("relevant")
      }
-   setActiveFilter(value)
+     if(value!==""){
+     
+        handleFilterChange(value)
+        setActiveFilter(value)
+     }
+  
   }
   
   //make addition filter  direct on sceen 
@@ -41,7 +47,7 @@ function AllFilters({isNavFilter,SearchFoodFun}) {
                     <div className="flex max-md:hidden gap-2">
                     {
                       top_filter.map((item,index)=>(
-                          <button key={index} onClick={handleClick} className={`flex justify-center items-center font-medium text-grey rounded-full ${ ActiveFilter==item ? 'bg-mainColor text-white  border border-mainColor':'bg-white border border-borderColor'}  shadow-sm  p-2  gap-2  `}><span className={`font-bold `}></span>{item}</button>
+                          <button key={index} onClick={handleClick} className={`flex justify-center items-center font-medium text-grey rounded-full ${ filtertype!=="relevant"&& ActiveFilter==item ? 'bg-mainColor text-white  border border-mainColor':'bg-white border border-borderColor'}  shadow-sm  p-2  gap-2  `}><span className={`font-bold `}></span>{item}</button>
 
                       ))
                     }
@@ -60,7 +66,7 @@ function AllFilters({isNavFilter,SearchFoodFun}) {
                     {
                       top_filter.map((item,index)=>(
                         
-                         <button key={index} onClick={handleClick} className={`font-medium text-grey rounded-full ${ ActiveFilter==item ? "bg-mainColor text-white border border-mainColor":"bg-white  border border-borderColor"} shadow-sm  px-2 py-2 flex items-center gap-2  `}><span className={`font-bold `}></span>{item}</button>
+                         <button key={index} onClick={handleClick} className={`font-medium text-grey rounded-full ${ filtertype!=="relevant" && ActiveFilter==item ? "bg-mainColor text-white border border-mainColor":"bg-white  border border-borderColor"} shadow-sm  px-2 py-2 flex items-center gap-2  `}><span className={`font-bold `}></span>{item}</button>
 
                       ))
                     }

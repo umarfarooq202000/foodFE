@@ -1,5 +1,11 @@
-import HomePageLayout from "../../Components/HomePageLayout";
 
+//icons from react-icons
+import { MdOutlineBusinessCenter } from "react-icons/md";
+import { TbUser } from "react-icons/tb";
+
+////////////////***********///////////// 
+import useDisclosure from "../../hooks/useDisclosure";
+import SideDrawer from "../../Components/SideDrawer";
 import { styled } from '@mui/system';
 import { Tabs as BaseTabs } from '@mui/base/Tabs';
 import { TabsList as BaseTabsList } from '@mui/base/TabsList';
@@ -84,9 +90,49 @@ const TabsList = styled(BaseTabsList)(
   `,
 )
 
-  return <HomePageLayout>
-      <div className="w-[100vw] max-h-[200vh] bg-colorhelp flex flex-col justify-center items-center">
-            <div className="w-[80%] max-h-[100%] max-sm:w-[100%] flex flex-col justify-center items-center ">
+const { onOpen, onClose, isOpen, position, singinClick} = useDisclosure();
+
+
+  return (
+    <>
+    
+      <div className="w-[100vw] max-h-[200vh] bg-colorhelp flex flex-col  items-center">
+           {/* NAVBAR */}
+      <div
+        className={`flex  items-center justify-around  w-[100vw] h-[80px] border-b-2 shadow-lg fixed z-50 bg-white  `}
+        >
+        <div className="w-[300px] h-[80px]  flex items-center justify-center  gap-4">
+          <img src="https://i.pinimg.com/236x/86/fa/02/86fa02f165fd0db848d2d13e5e484758.jpg" alt="Logo" className="w-[30%] h-[100%]" />
+          <p className=" text-2xl font-bold">HELP</p>
+        </div>
+        <div className=" w-[300px] h-[40px]   flex gap-10 ">
+          <Link
+            to="/help"
+            className="font-medium flex items-center gap-2 text-grey hover:text-mainColor"
+          >
+            <span className="text-2xl">
+              <MdOutlineBusinessCenter />
+            </span>
+            About Us
+          </Link>
+          <button
+            onClick={singinClick}
+            className="font-medium flex items-center gap-2 text-grey hover:text-mainColor"
+          >
+            <span className="text-2xl">
+              <TbUser />
+            </span>
+            SignIn
+          </button>
+        </div>
+        <SideDrawer
+          isOpen={isOpen}
+          onClose={onClose}
+          onOpen={onOpen}
+          position={position}
+        />
+      </div>
+            <div className="w-[80%] max-h-[100%] max-sm:w-[100%] flex flex-col justify-center items-center mt-24">
                     <div className="w-[90%] h-[200px] text-white flex flex-col justify-center gap-3">
                        <div>
                        <p className="text-4xl font-semibold">Help & Support</p>
@@ -115,7 +161,7 @@ const TabsList = styled(BaseTabsList)(
               
 
       </div>
-      
+      </>
         
-        </HomePageLayout>
+  )
 }

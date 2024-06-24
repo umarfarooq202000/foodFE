@@ -15,7 +15,7 @@ import { Badge } from "@mui/material";
 const nav_List = [
   {
     path: "/about-us",
-    name: "Corporate",
+    name: "About Us",
     icon: <MdOutlineBusinessCenter />,
   },
   {
