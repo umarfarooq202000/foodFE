@@ -78,7 +78,7 @@ function Navbar({
   return (
     <>
       <div
-        className={`flex items-center justify-center w-[100vw] h-[80px] bg-white shadow-md fixed z-50 gap-32`}
+        className={`flex items-center justify-center w-[100vw] h-[80px] bg-white shadow-md fixed z-50 gap-40 max-sm:gap-20`}
       >
         <div className="max-w-[200px] h-[60px]  flex  items-center gap-1">
           <img

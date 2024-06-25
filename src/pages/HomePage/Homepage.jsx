@@ -65,11 +65,11 @@ function Homepage() {
   const [CourselIndex, setCourserIndex] = useState(0);
   const nextBtn = () => {
     CourselIndex > 0 ? setCourserIndex(CourselIndex + 100) : setCourserIndex(0);
-  };
+  }
   const prevBtn = () => {
     CourselIndex > -800
       ? setCourserIndex(CourselIndex - 100)
-      : setCourserIndex(-500);
+      : setCourserIndex(0);
   };
 
   //Gettting needed value from useMyContext
@@ -175,6 +175,10 @@ function Homepage() {
   useEffect(() => {
     fetchData("https://foodbe-8h5f.onrender.com/fooddata");
   }, []);
+ 
+  // useEffect(() => {
+  //   fetchData("http://localhost:9000/fooddata");
+  // }, []);
 
 
   const SearchFoodFun = (e) => {
@@ -271,7 +275,7 @@ function Homepage() {
                 </div>
 
                 <div className=" w-[100%]  bg-white  max-sm:gap-0 overflow-hidden p-2">
-                  <CustomCoursel $courselindex={CourselIndex}>
+                  <CustomCoursel courselindex={CourselIndex}>
                     {food_list.map((item) => (
                       <Link
                         key={item.name}
@@ -364,7 +368,6 @@ const CustomCoursel = styled.div`
   @media screen and (max-width: 468px) {
     gap: 4px;
   }
- 
 `;
 
 export default Homepage;

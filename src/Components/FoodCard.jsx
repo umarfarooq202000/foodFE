@@ -128,9 +128,7 @@ function FoodCard({
                 id={id}
                 onClick={AddToCart}
                 className="bg-mainColor text-white p-1 border border-mainColor font-ubuntu rounded-md hover:scale-105 duration-300"
-              >
-                {" "}
-                Add to cart
+              > Add to cart
               </button>
             </div>
           </div>

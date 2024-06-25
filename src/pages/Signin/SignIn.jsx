@@ -4,10 +4,20 @@ import { Link } from "react-router-dom";
 import * as Yup from "yup";
 import { UseMyContext } from "../../Context/MyContext";
 import { ToastContainer, toast } from "react-toastify";
+import { useState } from "react";
 
 export default function SignIn({ onClose }) {
   //function to do trasitions to singUp form
   const { SingUp } = UseMyContext();
+
+
+  // Retrieve stored phone number from local storage
+  const storedPhoneNumber = localStorage.getItem('SignupValues');
+  const parsedPhoneNumber = storedPhoneNumber ? JSON.parse(storedPhoneNumber).phone_no : '';
+
+  const [formValues, setFormValues] = useState({
+    phone_no: parsedPhoneNumber, 
+  });
 
   const contactSchemaValidation = Yup.object().shape({
     phone_no: Yup.string()
@@ -16,12 +26,21 @@ export default function SignIn({ onClose }) {
   });
 
   //toast added when food is added to cart
-  const Addtoast1 = () => {
-    toast.info(
-      <div className="text-xl flex items-center justify-between">
-        {" User Authorisation not Bulid yet"}
-      </div>
-    );
+  const handleSubmit = async (values) => {
+  setTimeout(() => {
+    onClose()
+  },3000)
+    try {
+      // Replace this with actual authentication logic
+      if (values.phone_no === parsedPhoneNumber) {
+        toast.success("Login Successful");
+      } else {
+        toast.error("Invalid phone number. Please try again.");
+      }
+    } catch (error) {
+      console.error('Error:', error.message);
+      toast.error("Login failed. Please try again.");
+    }
   };
 
   return (
@@ -49,9 +68,9 @@ export default function SignIn({ onClose }) {
       <div>
         <Formik
           initialValues={{
-            phone_no: "",
+            phone_no: formValues.phone_no,
           }}
-          onSubmit={Addtoast1}
+          onSubmit={handleSubmit}
           validationSchema={contactSchemaValidation}
         >
           <Form className="flex flex-col gap-2">

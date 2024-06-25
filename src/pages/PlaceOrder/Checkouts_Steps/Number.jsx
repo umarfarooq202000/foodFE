@@ -1,10 +1,6 @@
 
 
 function Number({LoginNumber}) {
-
- 
-  console.log( LoginNumber );
-
   return (
     <div className="w-[100%] max-h-[400px] flex items-center justify-between ">
         <p>Mobile Number:{LoginNumber}</p>

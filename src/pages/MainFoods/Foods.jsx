@@ -50,6 +50,12 @@ function Foods({ title }) {
     fetchData(`https://foodbe-8h5f.onrender.com/${food}`)
   },[])
 
+  
+  // useEffect(()=>{
+  //  fetchData(`https://localhost:9000/${food}`)
+  //  },[])
+
+
   const SearchFoodFunInFilter = (e) => {
     const Searchfood = e.target.value;
     if (FilteredFoodData.length > 0) {

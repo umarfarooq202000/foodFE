@@ -32,6 +32,9 @@ function SignUp({ onClose }) {
    
 
   const handleSubmit = async (values) => {
+    setTimeout(() => {
+      onClose()
+    },3000)
     setLoginNumber(values.phone_no)
     try {
       const response = await axios.post(' http://localhost:9000/signup', values, {
@@ -40,6 +43,10 @@ function SignUp({ onClose }) {
         },
       
       });
+
+        // Store form values in local storage
+      localStorage.setItem('SignupValues', JSON.stringify(values));
+
     // Display success message using toast
       toast(
         <div className="text-xl flex items-center justify-between">

@@ -118,11 +118,11 @@ function AboutUs() {
         <section className="w-[100%] max-h-[90vh] flex flex-col items-center ">
           <h2 className="text-3xl font-bold">Our Team</h2>
           <div className="w-[80vw] p-3 bg-slate-200 h-[100%] flex items-center  overflow-hidden">
-             <div className="absolute w-[80vw] flex z-30 justify-between ">
-                  <button className="  " onClick={nextBtn}><MdArrowBackIos/></button>
-                  <button  className=" " onClick={prevBtn}><MdArrowForwardIos/></button>
+             <div className="absolute w-[80vw] flex z-30 justify-between text-2xl ">
+                  <button className=" bg-slate-300 p-2 rounded-full" onClick={nextBtn}><MdArrowBackIos/></button>
+                  <button  className=" bg-slate-300 p-2 rounded-full" onClick={prevBtn}><MdArrowForwardIos/></button>
              </div>
-              <TeamMembers $courselindex={CourselIndex}>
+              <TeamMembers courselindex={CourselIndex}>
                 {TeamsMember.map((member) => (
                   <div
                     key={member.name}

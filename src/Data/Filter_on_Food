@@ -1,5 +1,11 @@
 const filter_on_food=[
  
+  
+  {
+    name:'Default',
+    subFilter:['Relevant']
+  },
+  
   {
       name:'Cusine',
       subFilter:['Afghani','Indian','Pakistani','American','Chinese','Korean','italian']
