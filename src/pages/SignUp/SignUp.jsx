@@ -37,7 +37,7 @@ function SignUp({ onClose }) {
     },3000)
     setLoginNumber(values.phone_no)
     try {
-      const response = await axios.post(' http://localhost:9000/signup', values, {
+      const response = await axios.post('https://foodbe-8h5f.onrender.com/signup', values, {
         headers: {
           'Content-Type': 'application/json',
         },
