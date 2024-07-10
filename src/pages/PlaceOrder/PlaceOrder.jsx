@@ -193,7 +193,7 @@ function PlaceOrder() {
 
             {/* RIGHT SECTION OR DISPLAYING AMOUNT TO BE PAID */}
             {/* BILL DETAILS */}
-            <div className="w-[25%] min-w-[250px] max-h-[250px] border shadow-lg  items-baseline p-3 gap-2  bg-white max-sm:w-[100%] ">
+            <div className="w-[25%] min-w-[250px] max-h-[250px] border  items-baseline p-3 gap-2  bg-white max-sm:w-[100%] ">
               <p className="w-[100%] text-3xl font-ubuntu font-bold text-grey">
                 Bill details:
               </p>

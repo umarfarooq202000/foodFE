@@ -8,13 +8,13 @@ import AllFilters from "../../Components/AllFilters";
 import Navbar from "../../Components/Navbar";
 import Toast from "../../Components/Toast";
 import SideDrawer from "../../Components/SideDrawer";
-import Loader from "../../Components/Loader";
 import Skeleton from "react-loading-skeleton";
 
+
+
 function Foods({ title }) {
-
   const [FilteredFoodData, setFilteredFoodData] = useState();
-
+   const skeletonArr=[1,2,3,4,5,6,7,8]
   //getting needen state and function from useMyContext
   const {
     CartFoodList,
@@ -31,31 +31,30 @@ function Foods({ title }) {
     redtoast,
     setredToast,
     toastfood,
-    settoastfood
+    settoastfood,
+
   } = UseMyContext();
 
   const food = title.toLowerCase();
   const fetchData = async (url) => {
     try {
       const response = await axios.get(url);
-      const data = response.data; 
+      const data = response.data;
       setloader(false);
       setFilteredFoodData(data);
       return data;
     } catch (error) {
-      console.error("Error fetching data:", error); 
+      console.error("Error fetching data:", error);
     }
   };
 
-  useEffect(()=>{
-    fetchData(`https://foodbe-8h5f.onrender.com/${food}`)
-  },[])
+  useEffect(() => {
+    fetchData(`https://foodbe-8h5f.onrender.com/${food}`);
+  }, []);
 
-  
   // useEffect(()=>{
   //  fetchData(`http://localhost:9000/${food}`)
   //  },[])
-
 
   const SearchFoodFunInFilter = (e) => {
     const Searchfood = e.target.value;
@@ -118,92 +117,124 @@ function Foods({ title }) {
       }, 1000);
     }
   };
- 
+
   const [loader, setloader] = useState(true);
 
-  const {onClose,onOpen,isOpen,position,singinClick,LocationClick}=useDisclosure()
+  const { onClose, onOpen, isOpen, position, singinClick, LocationClick } = useDisclosure();
+  
 
   return (
     <>
- <div className="flex flex-col items-center">
-      {AddFilter ? (
-        <AllFilters
-          SearchFoodFun={SearchFoodFunInFilter}
-          filtertype={filtertype}
-          isNavFilter
-        />
-      ) : (
-        <Navbar FoodCount={FoodCount} onOpen={onOpen}   singinClick={singinClick}  LocationClick={LocationClick}
-/>
-      )}
-      <div className="w-[90vw] max-h[300vh] flex flex-col gap-4 item-center  ">
-      <SideDrawer
-          isOpen={isOpen}
-          onClose={onClose}
-          onOpen={onOpen}
-          position={position}
-        />
+      <div className="flex flex-col items-center">
+        {AddFilter ? (
+          <AllFilters
+            SearchFoodFun={SearchFoodFunInFilter}
+            filtertype={filtertype}
+            isNavFilter
+          />
+        ) : (
+          <Navbar
+            FoodCount={FoodCount}
+            onOpen={onOpen}
+            singinClick={singinClick}
+            LocationClick={LocationClick}
+            foodsNav
+          />
+        )}
+        <div className="w-[98vw] max-h[300vh] flex flex-col gap-4 item-center">
+       
+          <SideDrawer
+            isOpen={isOpen}
+            onClose={onClose}
+            onOpen={onOpen}
+            position={position}
+          />
 
-        {greentoast && <Toast foodName={toastfood} />}
-        {redtoast && <Toast addAgain foodName={toastfood} />}
+          {greentoast && <Toast foodName={toastfood} />}
+          {redtoast && <Toast addAgain foodName={toastfood} />}
 
         <div className="w-[100%] flex flex-col gap-4 px-4 mt-24 justify-center item-center">
-          <h1 className="text-grey font-bold text-6xl">{ loader ? <Skeleton height={80} width={200} borderRadius={50}/>: title}</h1>
-          <p>{ loader ? <Skeleton height={20} width={350} borderRadius={20}/>: `Cheesilicious ${title} to make every day extraordinary.`}</p>
-          <div className=" p-2 w-[100%] flex gap-2">
-            <div className=" w-[100%] flex">
-             { 
-              loader ? <div className="flex gap-2">
-                            <Skeleton  height={40} width={80}  borderRadius={10}/> 
-                            <Skeleton  height={40} width={80}  borderRadius={10}/> 
-                            <Skeleton  height={40} width={80}  borderRadius={10}/>
-                            <Skeleton  height={40} width={80}  borderRadius={10}/> 
-
-
-                        </div> 
-              
-              :<AllFilters filtertype={filtertype} />}
+            <h1 className="text-grey font-bold text-6xl">
+              {loader ? (
+                <Skeleton height={80} width={200} borderRadius={50} />
+              ) : (
+                title
+              )}
+            </h1>
+            <p>
+              {loader ? (
+                <Skeleton height={20} width={350} borderRadius={20} />
+              ) : (
+                `Cheesilicious ${title} to make every day extraordinary.`
+              )}
+            </p>
+            <div className=" p-2 w-[100%] flex gap-2">
+              <div className=" w-[100%] flex">
+                {loader ? (
+                  <div className="flex gap-2">
+                    <Skeleton height={40} width={80} borderRadius={10} />
+                    <Skeleton height={40} width={80} borderRadius={10} />
+                    <Skeleton height={40} width={80} borderRadius={10} />
+                    <Skeleton height={40} width={80} borderRadius={10} />
+                  </div>
+                ) : (
+                  <AllFilters filtertype={filtertype} />
+                )}
+              </div>
             </div>
+            <p className="text-3xl font-bold  text-grey">
+              {loader ? (
+                <Skeleton height={50} width={350} borderRadius={20} />
+              ) : (
+                `${title}s we serves...`
+              )}
+            </p>
           </div>
-          <p className="text-3xl font-bold  text-grey">
-          { loader ? <Skeleton height={50} width={350} borderRadius={20}/> :`${title}s we serves...`}
-          </p>
-        </div>
 
-        {/* FOOD DISPLAY DIV */}
-        <div className="flex flex-row  flex-wrap gap-10 w-[100%] max-h[200vh] max-sm:gap-1  ">
-          { FilteredFoodData &&
-            FilteredFoodData.filter((item) =>
-              item.type.toLowerCase().includes(filtertype.toLowerCase())
-            ).map((item, index) => (
+          {/* FOOD DISPLAY DIV */}
+          <div className="flex flex-row  flex-wrap gap-10 w-[100%] max-h[200vh] max-sm:gap-1  ">
+            {
+                loader
+                ?
+                <div className="flex flex-row  justify-center flex-wrap gap-10 w-[100%] max-h[200vh] py-4 max-sm:gap-2 ">
 
-              loader?
-              ( <div key={item.id} className="flex flex-col gap-2">
-                <Skeleton  height={200} width={200} borderRadius={20} />
-                <div className="w-[100%] flex gap-4">
-                    <Skeleton height={20} width={90} borderRadius={20} />
-                    <Skeleton height={20} width={90} borderRadius={20} />
-                </div>                            <Skeleton height={20} width={200} borderRadius={20} />
-                <div className="w-[100%] flex gap-4">
-                    <Skeleton height={20} width={90} borderRadius={20} />
-                    <Skeleton height={20} width={90} borderRadius={20} />
-                </div>
-          </div>)
-              :<FoodCard
-                AddToCart={AddToCart}
-                key={index}
-                name={item.name}
-                text={item.text}
-                img={item.image}
-                price={item.price}
-                ratings={item.ratings}
-                id={item.id}
-              />
-            ))}
+                { skeletonArr.map((n)=>(
+                    <div  key={n} className="flex flex-col gap-2">
+                    <Skeleton height={200} width={200} borderRadius={20} />
+                    <div className="w-[100%] flex gap-4">
+                      <Skeleton height={20} width={90} borderRadius={20} />
+                      <Skeleton height={20} width={90} borderRadius={20} />
+                    </div>{" "}
+                    <Skeleton height={20} width={200} borderRadius={20} />
+                    <div className="w-[100%] flex gap-4">
+                      <Skeleton height={20} width={90} borderRadius={20} />
+                      <Skeleton height={20} width={90} borderRadius={20} />
+                    </div>
+                  </div>
+                  ))
+                }
+            </div>
+            :
+            ( FilteredFoodData &&
+              FilteredFoodData.filter((item) =>
+                item.type.toLowerCase().includes(filtertype.toLowerCase())
+              ).map((item, index) =>
+                  <FoodCard
+                    AddToCart={AddToCart}
+                    key={index}
+                    name={item.name}
+                    text={item.text}
+                    img={item.image}
+                    price={item.price}
+                    ratings={item.ratings}
+                    id={item.id}
+                  />
+                
+              ))
+            }
+          </div>
         </div>
       </div>
-     
-    </div>
     </>
   );
 }

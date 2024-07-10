@@ -24,8 +24,7 @@ function Address() {
   });
 
   return (
-    <div className="h-[] my-2">
-    
+    <div className=" my-2">
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
@@ -35,9 +34,9 @@ function Address() {
     
     >
       {() => (
-        <Form className="font-mono border-4 w-[100%] max-h-[100vh] p-2">
-          <div className="flex gap-2 direction-column flex-wrap">
-              <div  className="flex flex-col">
+        <Form className="w-[100%] flex flex-col  font-mono border max-h-[100vh] p-2">
+          <div className="w-[100%] flex gap-2 direction-column flex-wrap ">
+              <div  className="flex flex-col flex-1">
                 <label htmlFor="name">Name:</label>
                 <Field type="text" id="name" name="name" className="border p-1 outline-none rounded-sm"/>
                 <div className="text-red-600 text-sm">
@@ -45,7 +44,7 @@ function Address() {
                 </div>
                 
               </div>
-              <div  className="flex flex-col ">
+              <div  className="flex flex-col flex-1 ">
                 <label htmlFor="street">Street Address:</label>
                 <Field type="text" id="street" name="street" className="border p-1 outline-none rounded-sm" />
                 <div className="text-red-600 text-sm">
@@ -54,14 +53,14 @@ function Address() {
               </div>
           </div>
           <div className="flex gap-2 direction-column flex-wrap">
-              <div className="flex flex-col ">
+              <div className="flex flex-col flex-1">
                   <label htmlFor="city">City:</label>
                   <Field type="text" id="city" name="city" className="border p-1 outline-none rounded-sm"/>
                   <div className="text-red-600 text-sm">
                     <ErrorMessage name="city" />
                   </div>
                 </div>
-                <div  className="flex flex-col ">
+                <div  className="flex flex-col flex-1 ">
                   <label htmlFor="state">State:</label>
                   <Field type="text" id="state" name="state" className="border p-1 outline-none rounded-sm"/>
                   <div className="text-red-600 text-sm">
@@ -71,12 +70,12 @@ function Address() {
 
           </div>
           <div className="flex gap-2 direction-column flex-wrap">
-                <div className="flex flex-col">
+                <div className="flex flex-col flex-1">
                   <label htmlFor="zip">Zip Code:</label>
                   <Field type="text" id="zip" name="zip" className="border p-1 outline-none rounded-sm"/>
                   <ErrorMessage name="zip"/>
                 </div>
-                <div className="flex flex-col">
+                <div className="flex flex-col flex-1">
                   <label htmlFor="country">Country:</label>
                   <Field type="text" id="country" name="country" className="border p-1 outline-none rounded-sm"/>
                   <ErrorMessage name="country"  />

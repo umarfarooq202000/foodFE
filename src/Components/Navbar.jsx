@@ -44,6 +44,33 @@ const nav_List = [
     icon: <BsCart2 />,
   },
 ];
+const foods_nav_List = [
+  {
+    path: "/about-us",
+    name: "About Us",
+    icon: <MdOutlineBusinessCenter />,
+  },
+  {
+    path: "/offers",
+    name: "Offers",
+    icon: <BiSolidOffer />,
+  },
+  {
+    path: "/help",
+    name: "Help",
+    icon: <IoHelpBuoyOutline />,
+  },
+  {
+    path: "/signin",
+    name: "SignIn",
+    icon: <TbUser />,
+  },
+  {
+    path: "/cart",
+    name: "Cart",
+    icon: <BsCart2 />,
+  },
+];
 
 function Navbar({
   singinClick,
@@ -51,6 +78,7 @@ function Navbar({
   FoodCount,
   handleMouseOut,
   handleMouseOver,
+  foodsNav
 }) {
   //search bar
   const { GetSearchbar, Animate } = UseMyContext();
@@ -77,9 +105,99 @@ function Navbar({
   }
   return (
     <>
-      <div
-        className={`flex items-center justify-center w-[100vw] h-[80px] bg-white shadow-md fixed z-50 gap-40 max-sm:gap-20`}
-      >
+     {
+      foodsNav
+      ? <div className={`flex items-center justify-center w-[100vw] h-[80px] bg-white shadow-md fixed z-50 gap-40 max-sm:gap-20`}  >
+      <div className="max-w-[200px] h-[60px]  flex  items-center gap-1">
+        <img
+          src="images/Yellow and White Minimalist Kitchen Logo123.png"
+          alt="Logo"
+          className="w-[150px] h-[60px]"
+        />
+      
+        <input
+          type="text"
+          placeholder="location"
+          className="h-[60%] w-[10vw] text-xl outline-none max-lg:hidden px-2"
+        />
+        <button className="text-mainColor" onClick={LocationClick}>
+          <FaChevronDown />
+        </button>
+      </div>
+      <div className="flex gap-8 max-lg:hidden">
+        {foods_nav_List.map((menu, index) => (
+          <div key={index} className="hover:text-mainColor">
+            {menu.name !== "Cart" ? (
+              menu.name === "SignIn" ? (
+                <button
+                  onClick={singinClick}
+                  className="font-medium flex items-center gap-2 text-grey hover:text-mainColor"
+                >
+                  <span className="text-2xl">{menu.icon}</span>
+                  {menu.name}
+                </button>
+              ) : (
+                <>
+                  {menu.name === "Search" ? (
+                    <button
+                      onClick={GetSearchbar}
+                      className="font-medium flex items-center gap-2 text-grey hover:text-mainColor"
+                    >
+                      <span className="text-2xl">{menu.icon}</span>
+                      {menu.name}
+                    </button>
+                  ) : (
+                    menu.name=== "Offers"
+                    ? (
+                      <button 
+                        onClick={handleClick}
+                        className="font-medium flex items-center gap-2 text-grey hover:text-mainColor">
+                        <span className="text-2xl">{menu.icon}</span>
+                        Offers
+                      </button>
+                     )
+                   :( <Link
+                      to={`${menu.path}`}
+                      className="font-medium flex items-center gap-2 text-grey hover:text-mainColor"
+                     >
+                      <span className="text-2xl">{menu.icon}</span>
+                      {menu.name}
+                    </Link>)
+                    
+                  )}
+                </>
+              )
+            ) : (
+              <div>
+                <Link
+                  onMouseOver={handleMouseOver}
+                  onMouseOut={handleMouseOut}
+                  to={`${menu.path}`}
+                  className="font-medium flex items-center gap-2 text-grey hover:text-mainColor  "
+                >
+                  <Badge badgeContent = {FoodCount || "0"} color="primary">
+                  <span
+                    className={`magictime ${
+                      Animate ? "twisterInUp twisterInDown-custom" : ""
+                    } flex justify-center items-center text-2xl `}
+                  >
+                    {menu.icon}
+                  </span>
+                  </Badge>
+                  {menu.name}
+                </Link>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      {/* {  NavMenu on less screen size} */}
+      <div className="text-mainColor text-4xl hidden max-lg:block">
+        <HiMenu className="cursor-pointer" onClick={GetMenu} />
+      </div>
+        </div>
+      : <div className={`flex items-center justify-center w-[100vw] h-[80px] bg-white shadow-md fixed z-50 gap-40 max-sm:gap-20`}  >
         <div className="max-w-[200px] h-[60px]  flex  items-center gap-1">
           <img
             src="images/Yellow and White Minimalist Kitchen Logo123.png"
@@ -154,7 +272,6 @@ function Navbar({
                       } flex justify-center items-center text-2xl `}
                     >
                       {menu.icon}
-                     
                     </span>
                     </Badge>
                     {menu.name}
@@ -169,7 +286,8 @@ function Navbar({
         <div className="text-mainColor text-4xl hidden max-lg:block">
           <HiMenu className="cursor-pointer" onClick={GetMenu} />
         </div>
-      </div>
+        </div>
+      }
 
       <NavMenu
         FoodCount={FoodCount}

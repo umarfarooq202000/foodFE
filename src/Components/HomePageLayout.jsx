@@ -49,9 +49,9 @@ function HomePageLayout({
       {/* getting search bar */}
       {SearchBar && !AddFilter && (
         <>
-        <div className={`flex justify-center w-[100vw] h-[100vh] fixed items-center z-40  ${SearchBar ? 'opacity-50':null} bg-grey`}>
+        <div className={`flex justify-center w-[98vw] h-[100vh] fixed items-center z-40 max-sm:w-[100vw] ${SearchBar ? 'opacity-50':null} bg-grey`}>
         </div>
-        <div className={`flex  justify-center w-[100vw] h-[100vh] fixed items-center z-40 `}>
+        <div className={`flex  justify-center w-[98vw] h-[100vh] fixed items-center z-40  max-sm:w-[100vw]`}>
              <div className={`flex flex-col text-lg min-w-[360px] w-[50vw] h-[140px] border border-borderColor bg-white z-50 shadow-xl  items-center `}>
              <div className="w-[100%] flex justify-end p-2">
                 <RxCross2
@@ -89,11 +89,11 @@ function HomePageLayout({
         position={position}
       />
 
-      <div className="flex flex-col w-[100vw] items-center max-h-max max-lg:w-[100vw] gap-7 my-20">
+      <div className="flex flex-col w-[98vw] items-center max-h-max max-lg:w-[100vw] gap-7 my-20">
         {children}
       </div>
       {/* FOOTER */}
-      <div className="w-[100vw] max-h-[100vh] ">
+      <div className="w-[98vw] max-h-[100vh]  max-sm:w-[100vw] ">
         <div className="w-[100%] max-h-[350px] bg-lightGrey flex justify-around flex-wrap p-2 max-md:justify-center">
           <p className="text-3xl font-bold text-grey w-[300px]  uppercase max-md:w-[90%] font-ubuntu max-sm:text-2xl">
             For better experience download the
