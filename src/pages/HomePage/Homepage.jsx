@@ -3,7 +3,7 @@ import "react-multi-carousel/lib/styles.css";
 import { useEffect, useState } from "react";
 import FoodCard from "../../Components/FoodCard";
 import { Link } from "react-router-dom";
-import Loader from "../../Components/Loader";
+// import Loader from "../../Components/Loader";
 import AllFilters from "../../Components/AllFilters";
 import { UseMyContext } from "../../Context/MyContext";
 import CartListedFood from "../Cart/CartFoodList";
@@ -14,6 +14,8 @@ import styled from "styled-components";
 
 import { FaRegArrowAltCircleRight } from "react-icons/fa";
 import { FaRegArrowAltCircleLeft } from "react-icons/fa";
+import Skeleton from "react-loading-skeleton";
+// import SkeletonLoader from "../../Components/Skeleton";
 
 function Homepage() {
 
@@ -212,12 +214,11 @@ function Homepage() {
       handleMouseOver={handleMouseOver}
       SearchFoodFun={SearchFoodFun}
     >
+      {/* <SkeletonLoader/> */}
       {greentoast && <Toast foodName={toastfood} />}
       {redtoast && <Toast addAgain foodName={toastfood} />}
-      {loader ? (
-        <Loader />
-      ) : (
-        <>
+     
+        
           {AddFilter ? (
             <AllFilters
               SearchFoodFun={SearchFoodFun}
@@ -257,27 +258,35 @@ function Homepage() {
               {/* upper part*/}
               <div className="flex flex-col gap-1 w-[100%] max-h-[500px] items-center p-1 border-b-2 border-gray-300 ">
                 <div className="h-[35px] w-[100%] flex items-center justify-between ">
-                  <p className="text-3xl font-bold font-julee text-grey mt-2">
-                    What is on your mind ?
+                  <p className="text-3xl font-medium font-ubuntu  text-grey mt-2">
+                   { loader ? <Skeleton  height={40} width={350} borderRadius={30}/>  :" What is on your mind ?"}
                   </p>
                 </div>
                 {/* List of food server in top of home page below "What is on your mind?" */}
                 <div className=" w-[100%] flex gap-2 justify-end text-3xl text-gray-400 px-3 duration-200">
-                  <p
+                 { loader?
+                  <Skeleton height={40} width={40} borderRadius={40} />
+
+                 :<p
                     onClick={nextBtn}
                    className=" cursor-pointer hover:text-gray-500"
                   >
                     <FaRegArrowAltCircleLeft />
-                  </p>
-                  <p onClick={prevBtn} className=" cursor-pointer hover:text-gray-500">
+                  </p>}
+                  { loader?
+                  <Skeleton height={40} width={40} borderRadius={40} />
+                 : <p onClick={prevBtn} className=" cursor-pointer hover:text-gray-500">
                     <FaRegArrowAltCircleRight />
                   </p>
+                  }
                 </div>
-
                 <div className=" homepagecoursel w-[100%]  bg-white  max-sm:gap-0 overflow-auto p-2">
                   <CustomCoursel courselindex={CourselIndex}>
-                    {food_list.map((item) => (
-                      <Link
+                    {food_list.map((item,index) => (
+
+                       loader
+                       ? <Skeleton key={index} height={130} width={130} borderRadius={130} />
+                       :<Link
                         key={item.name}
                         to={item.path}
                         className={`w-[200px] h-[180px]  flex flex-col  items-center justify-center cursor-pointer `}
@@ -293,19 +302,28 @@ function Homepage() {
                         <p className="text-2xl text-grey  font-Acme max-sm:scale-75">
                           {item.name}
                         </p>
-                      </Link>
+                       </Link>
+                      
                     ))}
                   </CustomCoursel>
                 </div>
                 {/* filters */}
                 <div className="flex flex-col gap-3 w-[100%] max-h-[50vh] p-2 ">
                   <div>
-                    <p className="text-4xl font-bold text-grey font-julee">
-                      Our food Menu...
+                    <p className="text-3xl font-medium text-grey font-ubuntu">
+                    { loader ?  <Skeleton  height={40} width={350} borderRadius={20}/>  :"  Our food Menu..."}
                     </p>
                   </div>
                   <div className=" w-[100%] flex">
-                    <AllFilters filtertype={filtertype} />
+                   { loader ? <div className="flex gap-2">
+                                 <Skeleton  height={40} width={80}  borderRadius={10}/> 
+                                 <Skeleton  height={40} width={80}  borderRadius={10}/> 
+                                 <Skeleton  height={40} width={80}  borderRadius={10}/>
+                                 <Skeleton  height={40} width={80}  borderRadius={10}/> 
+
+
+                     </div> 
+                    :<AllFilters filtertype={filtertype} />}
                   </div>
                 </div>
               </div>
@@ -334,6 +352,21 @@ function Homepage() {
                     FoodData.filter((item) =>
                       item.type.toLowerCase().includes(filtertype.toLowerCase())
                     ).map((item) => (
+                      
+                      loader ?
+                     ( <div key={item.id} className="flex flex-col gap-2">
+                            <Skeleton  height={200} width={200} borderRadius={20} />
+                            <div className="w-[100%] flex gap-4">
+                                <Skeleton height={20} width={90} borderRadius={20} />
+                                <Skeleton height={20} width={90} borderRadius={20} />
+                            </div>                            <Skeleton height={20} width={200} borderRadius={20} />
+                            <div className="w-[100%] flex gap-4">
+                                <Skeleton height={20} width={90} borderRadius={20} />
+                                <Skeleton height={20} width={90} borderRadius={20} />
+                            </div>
+                      </div>
+                      )
+                      :
                       <FoodCard
                         AddToCart={AddToCart}
                         key={item.id}
@@ -354,8 +387,7 @@ function Homepage() {
               )}
             </div>
           </div>         
-        </>
-      )}
+      
     </HomePageLayout>
   );
 }

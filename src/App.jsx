@@ -8,6 +8,7 @@ import { lazy, Suspense } from "react";
 import Loader from "./Components/Loader.jsx";
 import Homepage from "./pages/HomePage/Homepage.jsx";
 import ConfirmOrder from "./pages/ConfirmOrder/ConfirmOrder.jsx";
+import SkeletonLoader from "./Components/Skeleton.jsx";
 
 
 
@@ -30,6 +31,10 @@ const Drinks = lazy(()=> import("./pages/MainFoods/Drinks.jsx"))
 function App() {
   
   const router = createBrowserRouter([
+    {
+      path: "/skeleton",
+      element: <SkeletonLoader/>,
+    },
     {
       path: "/",
       element: <Homepage/>,

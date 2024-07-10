@@ -9,6 +9,7 @@ import Navbar from "../../Components/Navbar";
 import Toast from "../../Components/Toast";
 import SideDrawer from "../../Components/SideDrawer";
 import Loader from "../../Components/Loader";
+import Skeleton from "react-loading-skeleton";
 
 function Foods({ title }) {
 
@@ -124,11 +125,7 @@ function Foods({ title }) {
 
   return (
     <>
-   { 
-      loader
-   ? <Loader/>
-   
-   : (<div className="flex flex-col items-center">
+ <div className="flex flex-col items-center">
       {AddFilter ? (
         <AllFilters
           SearchFoodFun={SearchFoodFunInFilter}
@@ -151,15 +148,25 @@ function Foods({ title }) {
         {redtoast && <Toast addAgain foodName={toastfood} />}
 
         <div className="w-[100%] flex flex-col gap-4 px-4 mt-24 justify-center item-center">
-          <h1 className="text-grey font-bold text-6xl">{title}</h1>
-          <p>{`Cheesilicious ${title} to make every day extraordinary.`}</p>
+          <h1 className="text-grey font-bold text-6xl">{ loader ? <Skeleton height={80} width={200} borderRadius={50}/>: title}</h1>
+          <p>{ loader ? <Skeleton height={20} width={350} borderRadius={20}/>: `Cheesilicious ${title} to make every day extraordinary.`}</p>
           <div className=" p-2 w-[100%] flex gap-2">
             <div className=" w-[100%] flex">
-              <AllFilters filtertype={filtertype} />
+             { 
+              loader ? <div className="flex gap-2">
+                            <Skeleton  height={40} width={80}  borderRadius={10}/> 
+                            <Skeleton  height={40} width={80}  borderRadius={10}/> 
+                            <Skeleton  height={40} width={80}  borderRadius={10}/>
+                            <Skeleton  height={40} width={80}  borderRadius={10}/> 
+
+
+                        </div> 
+              
+              :<AllFilters filtertype={filtertype} />}
             </div>
           </div>
-          <p className="text-3xl font-bold font-julee text-grey">
-            {title}s we serves...
+          <p className="text-3xl font-bold  text-grey">
+          { loader ? <Skeleton height={50} width={350} borderRadius={20}/> :`${title}s we serves...`}
           </p>
         </div>
 
@@ -169,7 +176,20 @@ function Foods({ title }) {
             FilteredFoodData.filter((item) =>
               item.type.toLowerCase().includes(filtertype.toLowerCase())
             ).map((item, index) => (
-              <FoodCard
+
+              loader?
+              ( <div key={item.id} className="flex flex-col gap-2">
+                <Skeleton  height={200} width={200} borderRadius={20} />
+                <div className="w-[100%] flex gap-4">
+                    <Skeleton height={20} width={90} borderRadius={20} />
+                    <Skeleton height={20} width={90} borderRadius={20} />
+                </div>                            <Skeleton height={20} width={200} borderRadius={20} />
+                <div className="w-[100%] flex gap-4">
+                    <Skeleton height={20} width={90} borderRadius={20} />
+                    <Skeleton height={20} width={90} borderRadius={20} />
+                </div>
+          </div>)
+              :<FoodCard
                 AddToCart={AddToCart}
                 key={index}
                 name={item.name}
@@ -183,8 +203,7 @@ function Foods({ title }) {
         </div>
       </div>
      
-    </div>)
-    }
+    </div>
     </>
   );
 }
