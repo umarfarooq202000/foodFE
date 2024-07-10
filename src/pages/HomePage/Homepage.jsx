@@ -172,13 +172,13 @@ function Homepage() {
     }
   };
 
-  // useEffect(() => {
-  //   fetchData("https://foodbe-8h5f.onrender.com/fooddata");
-  // }, []);
- 
   useEffect(() => {
-    fetchData("http://localhost:9000/fooddata");
+    fetchData("https://foodbe-8h5f.onrender.com/fooddata");
   }, []);
+ 
+  // useEffect(() => {
+  //   fetchData("http://localhost:9000/fooddata");
+  // }, []);
 
 
   const SearchFoodFun = (e) => {

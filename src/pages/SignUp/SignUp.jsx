@@ -31,20 +31,20 @@ function SignUp({ onClose }) {
     }, 3000);
     setLoginNumber(values.phone_no);
     try {
-         const response = await axios.post('http://localhost:9000/signup', values, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      // const response = await axios.post(
-      //   "https://foodbe-8h5f.onrender.com/signup",
-      //   values,
-      //   {
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //   }
-      // );
+      //    const response = await axios.post('http://localhost:9000/signup', values, {
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      // });
+      const response = await axios.post(
+        "https://foodbe-8h5f.onrender.com/signup",
+        values,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
    
       localStorage.setItem("SignupValues", JSON.stringify(values));
       toast(
