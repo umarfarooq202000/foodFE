@@ -43,6 +43,12 @@ function SignUp({ onClose }) {
         },
       
       });
+      // const response = await axios.post('http://localhost:9000/signup', values, {
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      
+      // });
 
         // Store form values in local storage
       localStorage.setItem('SignupValues', JSON.stringify(values));

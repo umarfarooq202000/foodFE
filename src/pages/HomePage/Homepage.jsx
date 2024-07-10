@@ -274,7 +274,7 @@ function Homepage() {
                   </p>
                 </div>
 
-                <div className=" w-[100%]  bg-white  max-sm:gap-0 overflow-hidden p-2">
+                <div className=" homepagecoursel w-[100%]  bg-white  max-sm:gap-0 overflow-auto p-2">
                   <CustomCoursel courselindex={CourselIndex}>
                     {food_list.map((item) => (
                       <Link
@@ -363,6 +363,7 @@ const CustomCoursel = styled.div`
   width: 100%;
   display: flex;
   gap: 40px;
+  background-color:'red';
   transform: ${(props) => `translateX(${props.courselindex}px)`};
   transition: transform 0.3s ease;
   @media screen and (max-width: 468px) {

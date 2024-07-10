@@ -34,3 +34,9 @@ footer li:hover{
     /* Delay before the animation starts */
     animation-timing-function: ease-in-out; /* Timing function for the animation */
   }
+
+
+.homepagecoursel::-webkit-scrollbar{
+    display: none;
+
+  }
