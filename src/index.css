@@ -40,3 +40,7 @@ footer li:hover{
     display: none;
 
   }
+.coursel::-webkit-scrollbar{
+    display: none;
+
+  }

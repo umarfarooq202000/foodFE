@@ -7,10 +7,8 @@ import SignIn from "../Signin/SignIn";
 
 
 function Authentication({onClose}) {
-
-   
-       
-      const {page}=UseMyContext()
+          
+      const { page }=UseMyContext()
 
       return (
         <div>

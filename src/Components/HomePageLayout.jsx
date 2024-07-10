@@ -48,20 +48,27 @@ function HomePageLayout({
     <div className="flex flex-col w-[99vw] max-h-[200vh] ">
       {/* getting search bar */}
       {SearchBar && !AddFilter && (
-        <div className=" flex justify-center w-[100vw] fixed top-20 z-50">
-          <div className="flex text-lg min-w-[360px] w-[50vw] h-[60px] border-4 border-borderColor bg-white z-50 shadow-xl ">
-            <input
-              onChange={SearchFoodFun}
-              type="text"
-              placeholder="Search..."
-              className="text-lg  min-w-[340px] w-[48vw] p-1 outline-none bg-transparent rounded-md "
-            />
-            <RxCross2
-              className="cursor-pointer text-2xl text-mainColor font-bold "
-              onClick={CutSearchbar}
-            />
-          </div>
+        <>
+        <div className={`flex justify-center w-[100vw] h-[100vh] fixed items-center z-40  ${SearchBar ? 'opacity-50':null} bg-grey`}>
         </div>
+        <div className={`flex  justify-center w-[100vw] h-[100vh] fixed items-center z-40 `}>
+             <div className={`flex flex-col text-lg min-w-[360px] w-[50vw] h-[140px] border border-borderColor bg-white z-50 shadow-xl  items-center `}>
+             <div className="w-[100%] flex justify-end p-2">
+                <RxCross2
+                      className="cursor-pointer text-2xl text-mainColor font-bold "
+                      onClick={CutSearchbar}
+                    />
+             </div>
+              <input
+                onChange={SearchFoodFun}
+                type="text"
+                placeholder="Search for food..."
+                className="text-lg  min-w-[340px] w-[48vw] h-[50px] p-1 outline-none bg-transparent rounded-md border"
+              />
+             
+            </div>
+       </div>
+       </>
       )}
 
       {!AddFilter && (
@@ -170,6 +177,7 @@ function HomePageLayout({
             </ul>
           </div>
         </footer>
+        
 
         <div className="w-[100vw] h-[40px] flex items-center justify-center bg-black text-white border-t border-white font-ubuntu text-sm">
           <a href="" className="flex text-xs items-center  justify-center">

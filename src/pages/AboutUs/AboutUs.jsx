@@ -45,15 +45,15 @@ function AboutUs() {
       text: "Our web developer team excels in creating dynamic, responsive websites, ensuring seamless user experiences. We specialize in front-end and back-end development, utilizing the latest technologies for optimal performance and security.",
     },
   ];
-  const [CourselIndex, setCourserIndex] = useState(0);
-  const nextBtn = () => {
-    CourselIndex < 0 ? setCourserIndex(CourselIndex + 200) : setCourserIndex(0);
-  };
-  const prevBtn = () => {
-    CourselIndex > -800
-      ? setCourserIndex(CourselIndex - 200)
-      : setCourserIndex(-800);
-  };
+  // const [CourselIndex, setCourserIndex] = useState(0);
+  // const nextBtn = () => {
+  //   CourselIndex < 0 ? setCourserIndex(CourselIndex + 200) : setCourserIndex(0);
+  // };
+  // const prevBtn = () => {
+  //   CourselIndex > -800
+  //     ? setCourserIndex(CourselIndex - 200)
+  //     : setCourserIndex(-800);
+  // };
 
   const social_Media_contacts = [
     {
@@ -71,7 +71,7 @@ function AboutUs() {
   ];
   return (
     <div className="w-[98vw] max-h-[500vh] bg-white flex flex-col items-center max-md:justify-center gap-10 font-mono max-lg:w-[100vw]">
-       <header className="w-[100%] h-[80px] flex justify-around items-center  border-b-2 fixed top-0 bg-white">
+       <header className="w-[100%] h-[80px] flex justify-around items-center border-b-2 fixed  bg-white z-50">
        <img
             src="images/Yellow and White Minimalist Kitchen Logo123.png"
             alt="Logo"
@@ -115,14 +115,14 @@ function AboutUs() {
             </p>
           </div>
         </section>
-        <section className="w-[100%] max-h-[90vh] flex flex-col items-center ">
+        <section className="w-[100%] max-h-[90vh] flex flex-col items-center z-10">
           <h2 className="text-3xl font-bold">Our Team</h2>
-          <div className="w-[80vw] p-3 bg-slate-200 h-[100%] flex items-center  overflow-hidden">
-             <div className="absolute w-[80vw] flex z-30 justify-between text-2xl ">
+          <div className="coursel w-[80vw] p-3 bg-slate-200 h-[100%] flex items-center overflow-auto">
+             {/* <div className="absolute w-[80vw] flex justify-between text-2xl z-30">
                   <button className=" bg-slate-300 p-2 rounded-full" onClick={nextBtn}><MdArrowBackIos/></button>
                   <button  className=" bg-slate-300 p-2 rounded-full" onClick={prevBtn}><MdArrowForwardIos/></button>
-             </div>
-              <TeamMembers courselindex={CourselIndex}>
+             </div> */}
+              <TeamMembers>
                 {TeamsMember.map((member) => (
                   <div
                     key={member.name}
@@ -274,11 +274,11 @@ function AboutUs() {
 const TeamMembers=styled.div`
    
   display: flex;
-  gap: 40px;
-  transform: ${(props) => `translateX(${props.courselindex}px)`};
+  gap: 20px;
+ 
   transition: transform 0.3s ease;
   @media screen and (max-width: 468px) {
-    gap: 4px;
+    gap: 10px;
   }
 `;
 

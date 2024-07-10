@@ -6,13 +6,11 @@ import * as Yup from "yup";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';  // Ensure the CSS is included
 
 function SignUp({ onClose }) {
   const { Isreferral, referralCode } = useDisclosure();
-
-  const { login ,LoginNumber,setLoginNumber } = UseMyContext();
-  console.log(LoginNumber);
-  
+  const { login, setLoginNumber } = UseMyContext();
   const contactSchemaValidation = Yup.object().shape({
     phone_no: Yup.string()
       .matches(/^\d{10}$/, "Phone number must be exactly 10 digits")
@@ -27,51 +25,45 @@ function SignUp({ onClose }) {
       .notRequired(),
   });
 
-   
-
-   
-
-  const handleSubmit = async (values) => {
+  const handleSubmit = async (values,{resetForm}) => {
     setTimeout(() => {
-      onClose()
-    },3000)
-    setLoginNumber(values.phone_no)
+      onClose();
+    }, 3000);
+    setLoginNumber(values.phone_no);
     try {
-      const response = await axios.post('https://foodbe-8h5f.onrender.com/signup', values, {
+         const response = await axios.post('http://localhost:9000/signup', values, {
         headers: {
           'Content-Type': 'application/json',
         },
-      
       });
-      // const response = await axios.post('http://localhost:9000/signup', values, {
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      
-      // });
-
-        // Store form values in local storage
-      localStorage.setItem('SignupValues', JSON.stringify(values));
-
-    // Display success message using toast
+      // const response = await axios.post(
+      //   "https://foodbe-8h5f.onrender.com/signup",
+      //   values,
+      //   {
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //   }
+      // );
+   
+      localStorage.setItem("SignupValues", JSON.stringify(values));
       toast(
         <div className="text-xl flex items-center justify-between">
-          {response.data.message || 'User registered successfully'}
+          {response.data.message || "User registered successfully"}
         </div>
       );
-     //console.log('Success:', response.data);
-
-      // Handle success (e.g., redirect or show success message)
     } catch (error) {
       toast(
         <div className="text-xl flex items-center justify-between">
           {"SignUp Unsuccessfull"}
         </div>
       );
-      console.error('Error:', error.response ? error.response.data : error.message);
-      // Handle error (e.g., show error message)
+      console.error(
+        "Error:",
+        error.response ? error.response.data : error.message
+      );
     }
-   
+    resetForm();
   };
   return (
     <div className=" w-[40vw] flex flex-col gap-4 max-sm:w-[350px] p-5">
@@ -104,7 +96,6 @@ function SignUp({ onClose }) {
             referral_code: "",
           }}
           onSubmit={handleSubmit}
-          
           validationSchema={contactSchemaValidation}
         >
           <Form className="flex flex-col gap-2">
@@ -176,7 +167,6 @@ function SignUp({ onClose }) {
           </Form>
         </Formik>
       </div>
-
       {/* Displaying toast */}
       <ToastContainer
         position="top-left"
@@ -195,5 +185,3 @@ function SignUp({ onClose }) {
 }
 
 export default SignUp;
-
-

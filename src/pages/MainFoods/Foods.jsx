@@ -46,14 +46,14 @@ function Foods({ title }) {
     }
   };
 
-  useEffect(()=>{
-    fetchData(`https://foodbe-8h5f.onrender.com/${food}`)
-  },[])
+  // useEffect(()=>{
+  //   fetchData(`https://foodbe-8h5f.onrender.com/${food}`)
+  // },[])
 
   
-  // useEffect(()=>{
-  //  fetchData(`https://localhost:9000/${food}`)
-  //  },[])
+  useEffect(()=>{
+   fetchData(`http://localhost:9000/${food}`)
+   },[])
 
 
   const SearchFoodFunInFilter = (e) => {

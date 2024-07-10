@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import { UseMyContext } from "../../Context/MyContext";
 import { ToastContainer, toast } from "react-toastify";
 import { useState } from "react";
+import 'react-toastify/dist/ReactToastify.css';  // Ensure the CSS is included
 
 export default function SignIn({ onClose }) {
   //function to do trasitions to singUp form
@@ -103,6 +104,7 @@ export default function SignIn({ onClose }) {
           </Form>
         </Formik>
       </div>
+
       <ToastContainer
         position="bottom-left"
         autoClose={2500}

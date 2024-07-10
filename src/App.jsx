@@ -3,31 +3,29 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import { lazy, Suspense } from "react";
 
-//navbar options import for new page navigation
-import AboutUs from "./pages/AboutUs/AboutUs";
-import Search from "./pages/Search/Search";
-import Offers from "./pages/Offers/Offers";
-import SignIn from './pages/Signin/SignIn.jsx'
-import Cart from './pages/Cart/Cart.jsx'
-import Help from './pages/Help/Help.jsx'
-import TermsCondition from './pages/Terms&Condition/TermsCondition'
-
+import Loader from "./Components/Loader.jsx";
 import Homepage from "./pages/HomePage/Homepage.jsx";
-
-//main food itmes import 
-import Burger from './pages/MainFoods/Burger.jsx'
-import Biryani from './pages/MainFoods/Biryani.jsx'
-import Pizza from "./pages/MainFoods/Pizza";
-import Noodles from "./pages/MainFoods/Noodles";
-import Momos from "./pages/MainFoods/Momos";
-import Shakes from "./pages/MainFoods/Shakes";
-import Parathas from "./pages/MainFoods/Parathas";
-import Coffee from "./pages/MainFoods/Coffee"
-import Drinks from "./pages/MainFoods/Drinks";
-import PlaceOrder from "./pages/PlaceOrder/PlaceOrder.jsx";
 import ConfirmOrder from "./pages/ConfirmOrder/ConfirmOrder.jsx";
 
+
+
+
+const Cart=lazy(()=>import('./pages/Cart/Cart.jsx'))
+const AboutUs =lazy(()=> import("./pages/AboutUs/AboutUs.jsx"))
+const Help = lazy(()=> import("./pages/Help/Help.jsx"))
+const TermsCondition = lazy(()=> import("./pages/Terms&Condition/TermsCondition.jsx"))
+const PlaceOrder= lazy(()=> import("./pages/PlaceOrder/PlaceOrder.jsx"))
+const Burger = lazy(()=> import("./pages/MainFoods/Burger.jsx"))
+const Biryani = lazy(()=> import("./pages/MainFoods/Biryani.jsx"))
+const Pizza = lazy(()=> import("./pages/MainFoods/Pizza.jsx"))
+const Noodles = lazy(()=> import("./pages/MainFoods/Noodles.jsx"))
+const Momos = lazy(()=> import("./pages/MainFoods/Momos.jsx"))
+const Shakes = lazy(()=> import("./pages/MainFoods/Shakes.jsx"))
+const Parathas = lazy(()=> import("./pages/MainFoods/Parathas.jsx"))
+const Coffee = lazy(()=> import("./pages/MainFoods/Coffee.jsx"))
+const Drinks = lazy(()=> import("./pages/MainFoods/Drinks.jsx"))
 
 function App() {
   
@@ -38,71 +36,58 @@ function App() {
     },
     {
       path: "/about-us",
-      element: <AboutUs/>,
-    },
-    {
-      path: "/search",
-      element: <Search/>,
-    },
-    {
-      path: "/offers",
-      element: <Offers/>,
+      element: <Suspense fallback={ <Loader/> }> <AboutUs/></Suspense>,
     },
     {
       path: "/help",
-      element: <Help/>,
-    },
-    {
-      path: "/signin",
-      element: <SignIn/>,
+      element: <Suspense fallback={<Loader/>}><Help/></Suspense>,
     },
     {
       path:"/termsCondition",
-      element:<TermsCondition/>
+      element:   <Suspense fallback={ <Loader/> }><TermsCondition/></Suspense>,
     },
     {
       path: "/cart",
-      element: <Cart/>,
+      element: <Suspense fallback={ <Loader/> }><Cart/></Suspense>,
     },
-   
     {
       path: "/pizza",
-      element: <Pizza/>,
+      element:<Suspense fallback={ <Loader/> }><Pizza/></Suspense>,
     },
     {
       path:'/burger',
-      element:<Burger/>
+      element:<Suspense fallback={ <Loader/> }><Burger/></Suspense>,
     },
     {
       path:'/biryani',
-      element:<Biryani/>
+      element:<Suspense fallback={ <Loader/> }><Biryani/></Suspense>,
     },
     {
       path:'/noodles',
-      element:<Noodles/>
+      element:<Suspense fallback={ <Loader/> }><Noodles/></Suspense>,
     },
     {
       path:'/drinks',
-      element:<Drinks/>
+      element:<Suspense fallback={ <Loader/> }><Drinks/></Suspense>,
     },
     {
       path:'/momos',
-      element:<Momos/>
+      element:<Suspense fallback={ <Loader/> }><Momos/></Suspense>,
     },
     {
       path:'/shakes',
-      element:<Shakes/>
+      element:<Suspense fallback={ <Loader/> }><Shakes/></Suspense>,
     },
     {
       path:'/parathas',
-      element:<Parathas/>
+      element:<Suspense fallback={ <Loader/> }><Parathas/></Suspense>,
     },
     {
       path:"/coffee",
-      element:<Coffee/>
+      element:<Suspense fallback={ <Loader/> }><Coffee/></Suspense>,
     },
     {path:'/checkout',
-      element:<PlaceOrder/>
+      element:<Suspense fallback={ <Loader/> }><PlaceOrder/></Suspense>,
     },
     {
       path:"/order-confirm",
