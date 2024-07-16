@@ -37,10 +37,11 @@ function Foods({ title }) {
   } = UseMyContext();
 
   const food = title.toLowerCase();
-  const fetchData = async () => {
+  const fetchData = async (food) => {
     try {
-      const response = await axios.get(`${API_URLS.FETCH_FOOD_DATA}/${food}`);
+      const response = await axios.get(` ${API_URLS.BASE_URL}/${food}`);
       const data = response.data;
+      console.log(data)
       setloader(false);
       setFilteredFoodData(data);
       return data;
@@ -48,10 +49,10 @@ function Foods({ title }) {
       console.error("Error fetching data:", error);
     }
   };
-
+  
 
   useEffect(()=>{
-   fetchData()
+   fetchData(food)
    },[])
 
   const SearchFoodFunInFilter = (e) => {
