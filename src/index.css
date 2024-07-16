@@ -40,6 +40,10 @@ footer li:hover{
     display: none;
 
   }
+.infinityScroll::-webkit-scrollbar{
+    display: none;
+
+  }
 .coursel::-webkit-scrollbar{
     display: none;
 

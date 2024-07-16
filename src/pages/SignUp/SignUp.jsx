@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';  // Ensure the CSS is included
+import API_URLS from "../../APIs/Api";
 
 function SignUp({ onClose }) {
   const { Isreferral, referralCode } = useDisclosure();
@@ -31,13 +32,9 @@ function SignUp({ onClose }) {
     }, 3000);
     setLoginNumber(values.phone_no);
     try {
-      //    const response = await axios.post('http://localhost:9000/signup', values, {
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      // });
+     
       const response = await axios.post(
-        "https://foodbe-8h5f.onrender.com/signup",
+        `${API_URLS.FETCH_USER_DATA}`,
         values,
         {
           headers: {

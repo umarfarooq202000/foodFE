@@ -9,6 +9,7 @@ import Navbar from "../../Components/Navbar";
 import Toast from "../../Components/Toast";
 import SideDrawer from "../../Components/SideDrawer";
 import Skeleton from "react-loading-skeleton";
+import API_URLS from "../../APIs/Api";
 
 
 
@@ -36,9 +37,9 @@ function Foods({ title }) {
   } = UseMyContext();
 
   const food = title.toLowerCase();
-  const fetchData = async (url) => {
+  const fetchData = async () => {
     try {
-      const response = await axios.get(url);
+      const response = await axios.get(`${API_URLS.FETCH_FOOD_DATA}${food}`);
       const data = response.data;
       setloader(false);
       setFilteredFoodData(data);
@@ -48,13 +49,10 @@ function Foods({ title }) {
     }
   };
 
-  useEffect(() => {
-    fetchData(`https://foodbe-8h5f.onrender.com/${food}`);
-  }, []);
 
-  // useEffect(()=>{
-  //  fetchData(`http://localhost:9000/${food}`)
-  //  },[])
+  useEffect(()=>{
+   fetchData()
+   },[])
 
   const SearchFoodFunInFilter = (e) => {
     const Searchfood = e.target.value;

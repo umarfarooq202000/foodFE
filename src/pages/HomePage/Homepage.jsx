@@ -1,6 +1,6 @@
 import HomePageLayout from "../../Components/HomePageLayout";
 import "react-multi-carousel/lib/styles.css";
-import { useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import FoodCard from "../../Components/FoodCard";
 import { Link } from "react-router-dom";
 import AllFilters from "../../Components/AllFilters";
@@ -14,6 +14,10 @@ import { FaRegArrowAltCircleRight } from "react-icons/fa";
 import { FaRegArrowAltCircleLeft } from "react-icons/fa";
 import Skeleton from "react-loading-skeleton";
 import 'react-loading-skeleton/dist/skeleton.css'
+import InfiniteScroll from 'react-infinite-scroll-component';
+import Loader from "../../Components/Loader";
+import API_URLS from "../../APIs/Api";
+
 
 
 function Homepage() {
@@ -110,6 +114,13 @@ function Homepage() {
 
   //fooditems count in cart
   const [FoodData, setFoodData] = useState([]);
+  const [Currentpage, setCurrentPage] = useState(1);
+  // const [dataloading, setdataLoading] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
+
+  
+  const itemsOnPage=10
+  
   const AddFood = () => {
     setFoodCount(FoodCount + 1);
   };
@@ -161,25 +172,44 @@ function Homepage() {
       }, 1000);
     }
   };
-  const fetchData = async (url) => {
+
+
+  // useEffect(() => {
+  //   fetchData("https://foodbe-8h5f.onrender.com/fooddata");
+  // }, []);
+  
+
+  const fetchData = async () => {
     try {
-      const response = await axios.get(url);
-      const data = response.data;
-      setloader(false);
+      const response = await axios.get(`${API_URLS.FETCH_FOOD_DATA}?page=1&limit=10`);
+      const data = response.data.results;
       setFoodData(data);
-      return data;
+      setHasMore(response.data.next ? true : false);
+      setloader(false);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
 
   useEffect(() => {
-    fetchData("https://foodbe-8h5f.onrender.com/fooddata");
+    fetchData();
   }, []);
 
-  // useEffect(() => {
-  //   fetchData("http://localhost:9000/fooddata");
-  // }, []);
+
+  const fetchMoreData = async () => {
+    try {
+      const nextPage = Currentpage + 1;
+      const response = await axios.get(`${API_URLS.FETCH_FOOD_DATA}?page=${nextPage}&limit=${itemsOnPage}`);
+      const data = response.data.results;
+      setFoodData((prevData) => [...prevData, ...data]);
+      setCurrentPage(nextPage);
+      setHasMore(response.data.next ? true : false);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+
 
   const SearchFoodFun = (e) => {
     const food_search = e.target.value;
@@ -226,7 +256,7 @@ function Homepage() {
         ""
       )}
       <div
-        className="w-[100vw] max-h-[6000vh] flex justify-center "
+        className="w-[98vw] max-h-[6000vh] flex justify-center "
         onMouseOut={handleMouseOut}
       >
         <div
@@ -382,28 +412,36 @@ function Homepage() {
               ))}
             </div>
             ) : (
-            <div className="flex flex-row  justify-center flex-wrap gap-10 w-[100%] max-h[200vh] py-4 max-sm:gap-2">
-              {FoodData ? (
-                FoodData.filter((item) =>
-                  item.type.toLowerCase().includes(filtertype.toLowerCase())
-                ).map((item) =>
-                    <FoodCard
-                      AddToCart={AddToCart}
-                      key={item.id}
-                      id={item.id}
-                      name={item.name}
-                      text={item.text}
-                      img={item.image}
-                      price={item.price}
-                      ratings={item.ratings}
-                    /> 
-                )
-              ) : (
-                <div className="flex  justify-center w-[100%] h-[400px]">
-                  <NoFoodOnFilter />
-                </div>
-              )}
-            </div>
+              <InfiniteScroll
+                    className="infinityScroll"
+                    dataLength={FoodData.length}
+                    next={fetchMoreData}
+                    hasMore={hasMore}
+                    loader={<Loader/>}
+                   >
+                  <div className="flex flex-row  justify-center flex-wrap gap-10 w-[100%] max-h[200vh] py-4 max-sm:gap-2">
+                    {FoodData ? (
+                      FoodData.filter((item) =>
+                        item.type.toLowerCase().includes(filtertype.toLowerCase())
+                      ).map((item) =>
+                          <FoodCard
+                            AddToCart={AddToCart}
+                            key={item.id}
+                            id={item.id}
+                            name={item.name}
+                            text={item.text}
+                            img={item.image}
+                            price={item.price}
+                            ratings={item.ratings}
+                          /> 
+                      )
+                    ) : (
+                      <div className="flex  justify-center w-[100%] h-[400px]">
+                        <NoFoodOnFilter />
+                      </div>
+                    )}
+                  </div>
+              </InfiniteScroll>
            ))
            }
         
