@@ -39,7 +39,7 @@ function Foods({ title }) {
   const food = title.toLowerCase();
   const fetchData = async () => {
     try {
-      const response = await axios.get(`${API_URLS.FETCH_FOOD_DATA}${food}`);
+      const response = await axios.get(`${API_URLS.FETCH_FOOD_DATA}/${food}`);
       const data = response.data;
       setloader(false);
       setFilteredFoodData(data);
