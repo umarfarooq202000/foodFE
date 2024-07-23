@@ -1,7 +1,7 @@
 // src/config/apiUrls.js
 
-// const BASE_URL = 'http://localhost:9000';
-const BASE_URL = 'https://foodbe-8h5f.onrender.com';
+const BASE_URL = 'http://localhost:9000';
+// const BASE_URL = 'https://foodbe-8h5f.onrender.com';
 
 
 const API_URLS = {

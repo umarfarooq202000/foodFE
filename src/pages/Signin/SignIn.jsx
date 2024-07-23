@@ -8,9 +8,9 @@ import { useState } from "react";
 import 'react-toastify/dist/ReactToastify.css';  // Ensure the CSS is included
 
 export default function SignIn({ onClose }) {
+  
   //function to do trasitions to singUp form
-  const { SingUp } = UseMyContext();
-
+  const { SingUp , setLoginNumber} = UseMyContext();
 
   // Retrieve stored phone number from local storage
   const storedPhoneNumber = localStorage.getItem('SignupValues');
@@ -35,6 +35,7 @@ export default function SignIn({ onClose }) {
       // Replace this with actual authentication logic
       if (values.phone_no === parsedPhoneNumber) {
         toast.success("Login Successful");
+        setLoginNumber(parsedPhoneNumber)
       } else {
         toast.error("Invalid phone number. Please try again.");
       }

@@ -252,8 +252,7 @@ function PlaceOrder() {
 
         {/* BOTTOM SECTION FOR BILL DETAILED */}
         <div className=" w-[100%] h-[70px] bg-mainColor border-t flex justify-around items-center z-40 fixed bottom-0 lg:hidden ">
-          <div className="flex justify-between  my-2 py-2 items-center
-          ">
+          <div className="flex justify-between  my-2 py-2 items-center">
             <p className="font-bold text-2xl text-white font-mono">
               Total Bill :
             </p>

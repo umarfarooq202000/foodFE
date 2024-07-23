@@ -42,7 +42,7 @@ function CartFood({name,image,price,id,DeleteItem}) {
   }, [NumOrder]);
 
   return (
-            <div className="w-[100%] flex items-center justify-around border-b-2 p-2">
+            <div className="w-[100%] flex items-center justify-around border-b-2 p-2  hover:bg-bg">
                     <div className="w-[35px] h-[35px] overflow-hidden bg-center">
                         <img src={`${image}`} alt="" className="w-[100%] h-[100%] rounded-full"/>
                         
@@ -55,7 +55,7 @@ function CartFood({name,image,price,id,DeleteItem}) {
                     </div>
                     
                     <p className="flex w-[50px] items-center"><LuIndianRupee/>{NumOrder * price}</p>
-                    <button  onClick={DeleteItem}  className="text-2xl text-mainColor"><TiDelete id={id} className="w-[30px] h-[30px]"/></button>
+                    <button  onClick={DeleteItem}  className="text-2xl text-mainColor hover:scale-95 duration-200"><TiDelete id={id} className="w-[30px] h-[30px]"/></button>
             </div>
          
            

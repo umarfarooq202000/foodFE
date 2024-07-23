@@ -7,17 +7,18 @@ import { MdArrowRightAlt } from "react-icons/md";
 import { MdFastfood } from "react-icons/md";
 import { MdDeleteForever } from "react-icons/md";
 import CartFood from "./CartFood";
+import Toast from "../../Components/Toast";
 
 
 function CartListedFood({DeleteAll,DeleteItem}) {
 
 
 
-  const {CartFoodList,TotalPayment,SGST_,CGST_,deliveryCharge}=UseMyContext()
+  const {CartFoodList,TotalPayment,SGST_,CGST_,deliveryCharge,LoginNumber}=UseMyContext()
  
- 
+    console.log(LoginNumber)
   
-
+  
 
   return (
     <div className="w-[370px] max-h-[200vh]  max-md:w-[100%] bg-white z-50 flex flex-col font-Agdasima">
@@ -71,9 +72,14 @@ function CartListedFood({DeleteAll,DeleteItem}) {
         </div>
         {/* PLACE ORDER BUTTON */}
         <div className="">
-          <Link to="/checkout" className="bg-mainColor flex justify-center gap-2 items-center  p-2  text-white text-xl font-bold border border-mainColor  hover:scale-95 duration-500 m-2 rounded-lg">Place Order<MdArrowRightAlt className="text-3xl"/></Link>
-        </div>
-   
+{         LoginNumber ? 
+                 
+                 <Link to={`${ LoginNumber ?'/checkout':'/'}`} className="bg-mainColor flex justify-center gap-2 items-center  p-2  text-white text-xl font-bold border border-mainColor  hover:scale-95 duration-500 m-2 rounded-lg">Place Order<MdArrowRightAlt className="text-3xl"/></Link>
+                : <p className="bg-mainColor flex justify-center gap-2 items-center  p-2  text-white text-xl font-bold border border-mainColor" >Please Login/SignUp to place order</p>
+                }       
+
+</div>
+       
   </div>
   )
 }

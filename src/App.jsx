@@ -9,9 +9,6 @@ import Loader from "./Components/Loader.jsx";
 import Homepage from "./pages/HomePage/Homepage.jsx";
 import ConfirmOrder from "./pages/ConfirmOrder/ConfirmOrder.jsx";
 
-
-
-
 const Cart=lazy(()=>import('./pages/Cart/Cart.jsx'))
 const AboutUs =lazy(()=> import("./pages/AboutUs/AboutUs.jsx"))
 const Help = lazy(()=> import("./pages/Help/Help.jsx"))
@@ -37,7 +34,7 @@ function App() {
     },
     {
       path: "/about-us",
-      element: <Suspense fallback={ <Loader/> }> <AboutUs/></Suspense>,
+      element: <Suspense fallback={<Loader/>}><AboutUs/></Suspense>,
     },
     {
       path: "/help",
