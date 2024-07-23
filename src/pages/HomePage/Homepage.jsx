@@ -417,7 +417,7 @@ function Homepage() {
                     dataLength={FoodData.length}
                     next={fetchMoreData}
                     hasMore={hasMore}
-                    loader={<Loader/>}
+                    loader={<Loader infiniteloader/>}
                    >
                   <div className="flex flex-row  justify-center flex-wrap gap-10 w-[100%] max-h[200vh] py-4 max-sm:gap-2">
                     {FoodData ? (

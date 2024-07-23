@@ -11,8 +11,6 @@ import SideDrawer from "../../Components/SideDrawer";
 import Skeleton from "react-loading-skeleton";
 import API_URLS from "../../APIs/Api";
 
-
-
 function Foods({ title }) {
   const [FilteredFoodData, setFilteredFoodData] = useState();
    const skeletonArr=[1,2,3,4,5,6,7,8]
@@ -50,7 +48,6 @@ function Foods({ title }) {
     }
   };
   
-
   useEffect(()=>{
    fetchData(food)
    },[])
