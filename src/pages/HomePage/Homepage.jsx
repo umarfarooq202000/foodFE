@@ -174,11 +174,6 @@ function Homepage() {
   };
 
 
-  // useEffect(() => {
-  //   fetchData("https://foodbe-8h5f.onrender.com/fooddata");
-  // }, []);
-  
-
   const fetchData = async () => {
     try {
       const response = await axios.get(`${API_URLS.FETCH_FOOD_DATA}?page=1&limit=10`);
@@ -190,7 +185,6 @@ function Homepage() {
       console.error("Error fetching data:", error);
     }
   };
-
   useEffect(() => {
     fetchData();
   }, []);

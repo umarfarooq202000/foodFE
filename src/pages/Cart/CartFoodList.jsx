@@ -7,7 +7,7 @@ import { MdArrowRightAlt } from "react-icons/md";
 import { MdFastfood } from "react-icons/md";
 import { MdDeleteForever } from "react-icons/md";
 import CartFood from "./CartFood";
-import Toast from "../../Components/Toast";
+// import Toast from "../../Components/Toast";
 
 
 function CartListedFood({DeleteAll,DeleteItem}) {
@@ -35,8 +35,8 @@ function CartListedFood({DeleteAll,DeleteItem}) {
         </div>
         {/* FOOD ITEMS DETAILED */}
         <div className="w-[100%] h-[250px]  overflow-auto">
-                  {CartFoodList && CartFoodList.map((item, index) => (
-                    <CartFood DeleteItem={DeleteItem}  key={index} id={item.id} name={item.name} price={item.price} image={item.image} />
+                  {CartFoodList && CartFoodList.map((item) => (
+                    <CartFood DeleteItem={DeleteItem}  key={item.id} id={item.id} name={item.name} price={item.price} image={item.image} />
                   ))}
         </div>
         <div className="flex items-center justify-center">
@@ -74,7 +74,7 @@ function CartListedFood({DeleteAll,DeleteItem}) {
         <div className="">
 {         LoginNumber ? 
                  
-                 <Link to={`${ LoginNumber ?'/checkout':'/'}`} className="bg-mainColor flex justify-center gap-2 items-center  p-2  text-white text-xl font-bold border border-mainColor  hover:scale-95 duration-500 m-2 rounded-lg">Place Order<MdArrowRightAlt className="text-3xl"/></Link>
+                 <Link to={`${ LoginNumber ?'/checkout':'/'}`} className="bg-mainColor flex justify-center gap-2 items-center  p-2  text-white text-xl font-bold border border-mainColor  hover:scale-95 duration-200 m-2 rounded-lg">Place Order<MdArrowRightAlt className="text-3xl"/></Link>
                 : <p className="bg-mainColor flex justify-center gap-2 items-center  p-2  text-white text-xl font-bold border border-mainColor" >Please Login/SignUp to place order</p>
                 }       
 
